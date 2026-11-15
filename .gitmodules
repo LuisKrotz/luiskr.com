@@ -22,3 +22,6 @@
 [submodule "rust"]
 	path = rust
 	url = git@github.com:LuisKrotz/luiskr.com-rust.git
+[submodule "experiments/axioms-end"]
+	path = experiments/axioms-end
+	url = git@github.com:LuisKrotz/luiskr.com-axioms-end.git
