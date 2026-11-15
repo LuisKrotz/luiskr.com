@@ -726,7 +726,12 @@ export default defineConfig(({ command }) => {
     plugins.push(
       VitePWA({
         registerType: 'autoUpdate',
-        injectRegister: 'script-defer',
+        // No generated registerSW.js — the app's own module
+        // (shared/src/registerServiceWorker.ts) is the single registration
+        // authority. It gates on local origins (preview/dev drop stale
+        // workers instead of registering), which a plugin-injected script
+        // would bypass unconditionally.
+        injectRegister: false,
         filename: 'service-worker.js',
         manifestFilename: 'site.webmanifest',
         includeAssets: [
