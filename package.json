@@ -75,6 +75,7 @@
     "a11y": "node shared/scripts/verify/a11y-checker.mjs",
     "a11y:en": "node shared/scripts/verify/a11y-checker.mjs --en",
     "test:fps": "node shared/scripts/verify/scroll-fps.mjs",
+    "test:clarity": "node shared/scripts/verify/clarity-insights.mjs",
     "lighthouse": "yarn build --verify-lighthouse",
     "lint": "eslint shared core website cms experiments --max-warnings=0",
     "lint:fix": "eslint shared core website cms experiments --fix --max-warnings=0",

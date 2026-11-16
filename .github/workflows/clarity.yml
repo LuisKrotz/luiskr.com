@@ -1,0 +1,45 @@
+name: clarity-insights
+
+# Pulls the production Clarity live-insights export (JS errors, dead/rage
+# clicks, perf medians) into experiments/docs/reports/clarity-insights.json.
+# Daily schedule keeps the trend visible; workflow_dispatch lets any run
+# re-check prod after a deploy without waiting for the cron tick.
+on:
+  schedule:
+    - cron: '0 8 * * *'
+  workflow_dispatch:
+
+jobs:
+  insights:
+    name: Clarity live insights
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: yarn
+
+      - run: yarn install --frozen-lockfile
+
+      # Warn-only by default. Set CLARITY_MAX_JS_ERROR_PCT in repo Actions
+      # variables to turn the js-error session share into a hard gate.
+      - name: Pull Clarity live insights
+        run: yarn test:clarity
+        env:
+          CLARITY_TOKEN: ${{ secrets.CLARITY_TOKEN }}
+          CLARITY_NUM_OF_DAYS: '1'
+          CLARITY_DIMENSION1: Device
+          CLARITY_DIMENSION2: URL
+          CLARITY_MAX_JS_ERROR_PCT: ${{ vars.CLARITY_MAX_JS_ERROR_PCT }}
+
+      - name: Upload insights report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: clarity-insights
+          path: experiments/docs/reports/clarity-insights.json
+          retention-days: 30
