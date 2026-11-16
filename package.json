@@ -1,6 +1,6 @@
 {
   "name": "luiskr.com",
-  "version": "5.3.6",
+  "version": "5.3.7",
   "private": true,
   "workspaces": [
     "shared",
@@ -98,7 +98,9 @@
     "gates:scope": "node shared/scripts/verify/scope-gates.mjs run",
     "gates:areas": "node shared/scripts/verify/scope-gates.mjs areas",
     "setup": "node shared/scripts/setup.mjs",
-    "setup:gui": "electron desktop/launcher-main.mjs"
+    "setup:gui": "electron desktop/launcher-main.mjs",
+    "test:mobile": "yarn build && yarn test:mobile:unit && yarn playwright test",
+    "test:mobile:unit": "TEST_MOBILE=1 yarn workspace @luiskr/shared test bundle-safety mobile-resilience && yarn workspace @luiskr/website test custom-elements-lifecycle"
   },
   "dependencies": {
     "firebase": "^13.0.0",
@@ -132,6 +134,7 @@
   "devDependencies": {
     "@eslint/js": "^10.0.1",
     "@lhci/cli": "^0.15.1",
+    "@playwright/test": "^1.65.1",
     "@types/three": "^0.184.1",
     "@webcomponents/webcomponentsjs": "^2.8.0",
     "accessibility-checker": "4.0.34",

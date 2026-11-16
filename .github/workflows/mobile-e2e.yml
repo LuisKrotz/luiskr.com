@@ -1,0 +1,23 @@
+name: mobile-e2e
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+jobs:
+  mobile-matrix:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: yarn
+      - run: yarn install --frozen-lockfile
+      - run: yarn playwright install --with-deps webkit chromium
+      - run: yarn test:mobile
+        env:
+          CI: '1'

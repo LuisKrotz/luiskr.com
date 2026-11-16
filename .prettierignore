@@ -38,3 +38,5 @@ website/public/wasm/
 # Agent scratch probes (.tmp-*) — debug artifacts, never authored source.
 .tmp-*/
 .tmp-*
+test-results/
+playwright-report/
