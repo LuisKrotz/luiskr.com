@@ -1052,7 +1052,6 @@ export default defineConfig(({ command }) => {
         '@earth': fileURLToPath(new URL('./experiments/earth-playground', import.meta.url)),
         '@docs': fileURLToPath(new URL('./experiments/docs', import.meta.url)),
         '@star': fileURLToPath(new URL('./experiments/star-field', import.meta.url)),
-        '@axioms': fileURLToPath(new URL('./experiments/axioms-end', import.meta.url)),
         // Dev-only offline CMS mode (`CMS_MOCK=1 npm run dev`): the bare
         // `firebase/database` specifier is pre-bundled by optimizeDeps, so it
         // must be intercepted via resolve.alias rather than the plugin hook.
