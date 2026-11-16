@@ -409,7 +409,7 @@
           },
           "text-draw": {
             "alt": "Text drawing itself letter by letter as if handwritten",
-            "longdesc": "Section titles, links and captions styled with the draw-text treatment across the site. Animation: each character is drawn pen-stroke style in reading order — strokes write on sequentially like handwriting or a plotter, with optional word-level grouping. Trigger: plays when the element scrolls into view (IntersectionObserver, viewport trigger) or on explicit dispatch. Tech: instanced per-character drawing on canvas (Rust/WASM text-draw widget) with a CSS keyframe fallback (char-draw/word-draw). Purpose: makes headings feel authored — written in front of you rather than stamped."
+            "longdesc": "Section titles, links and captions styled with the draw-text treatment across the site. Animation: on fine-pointer desktops each character is drawn pen-stroke style in reading order — strokes write on sequentially like handwriting or a plotter, with optional word-level grouping; on touch-primary devices (phones, tablets) the per-character draw is replaced by a single light fade — the text simply fades in. Trigger: plays when the element scrolls into view (IntersectionObserver, viewport trigger) or on explicit dispatch. Tech: instanced per-character drawing on canvas (Rust/WASM text-draw widget) plus a CSS keyframe path (char-draw), both desktop-only; touch sessions render word spans and play a CSS opacity fade. Purpose: makes headings feel authored on desktop — written in front of you rather than stamped — without the per-character DOM cost on mobile GPUs."
           },
           "ring-sheen": {
             "alt": "Tile border with a light sheen travelling around the ring",
@@ -1117,6 +1117,15 @@
               "media": {
                 "height": "512",
                 "path": "awards/making-our-documentation-ai-ready-2026.png",
+                "width": "681"
+              }
+            },
+            {
+              "description": "Nov. 13th 2026:<br>Security, Ownership, and Excellence<span class=\"sr-only\"> Cheers award presented by Marcelo Bacchieri recognizing the DDS Website POD for closing 134 Mythos vulnerabilities within SLA — demonstrating technical excellence, execution discipline, teamwork, self-management, and a highly organized approach that required very little oversight.</span>",
+              "link": "https://storage.googleapis.com/luiskr.com/public/shared_items/awards/2026/Security%2C%20Ownership%2C%20and%20Excellence.pdf",
+              "media": {
+                "height": "512",
+                "path": "awards/security-ownership-and-excellence-2026.png",
                 "width": "681"
               }
             }
@@ -3168,6 +3177,8 @@
               [
                 "In my current role within the Support POD and the Website POD, my daily focus centers on pushing the Dell Design System forward using Agentic AI workflows and Spec-Driven development methodologies.",
                 "By synthesizing years of hands-on experience across Vanilla JavaScript, React, Angular, and Data Visualization with modern AI tools, I help architect scalable, accessible, and future-proof UI solutions.",
+                "Putting these principles into practice requires both technical discipline and a focus on the developer experience. Within the Website POD, this meant tackling platform stability by organizing an independent team effort to close 134 Mythos vulnerabilities within a strict SLA, an initiative that earned recognition for security, ownership, and technical excellence.",
+                "Similarly, future-proofing our solutions within the Support POD meant ensuring our resources are prepared for the next generation of software development. By conducting a deep review of our migration documentation, we identified key gaps and raised the quality of our guidance. This not only helped human developers reading the documentation directly, but ensured our content is fully AI-ready for MCP and automated workflows.",
                 "The design system ecosystem continues to evolve rapidly, and I remain energized to help lead its ongoing transformation.",
                 "Check out the Dell Design System at: <a href='https://www.delldesignsystem.com' rel='noopener nofollow'>delldesignsystem.com</a>"
               ],
@@ -3278,7 +3289,7 @@
             "webgl"
           ],
           "date": "2026-10-11T23:18:16-03:00",
-          "modified": "2026-11-08T15:06:55-03:00"
+          "modified": "2026-11-16T13:07:27-03:00"
         },
         "aboutmarco": {
           "cover": {
@@ -8949,7 +8960,7 @@
           },
           "text-draw": {
             "alt": "Texto se desenhando letra a letra como manuscrito",
-            "longdesc": "Títulos de seção, links e legendas com o tratamento draw-text em todo o site. Animação: cada caractere é desenhado estilo traço de caneta em ordem de leitura — os traços se escrevem sequencialmente como caligrafia ou plotter, com agrupamento opcional por palavra. Gatilho: toca quando o elemento entra na viewport (IntersectionObserver, gatilho de viewport) ou por dispatch explícito. Tecnologia: desenho instanciado por caractere em canvas (widget text-draw em Rust/WASM) com fallback em keyframe CSS (char-draw/word-draw). Propósito: fazer os títulos parecerem autografados — escritos diante de você em vez de carimbados."
+            "longdesc": "Títulos de seção, links e legendas com o tratamento draw-text em todo o site. Animação: em desktops com ponteiro fino, cada caractere é desenhado estilo traço de caneta em ordem de leitura — os traços se escrevem sequencialmente como caligrafia ou plotter, com agrupamento opcional por palavra; em dispositivos touch (celulares, tablets) o desenho por caractere é substituído por um único fade leve — o texto simplesmente aparece. Gatilho: toca quando o elemento entra na viewport (IntersectionObserver, gatilho de viewport) ou por dispatch explícito. Tecnologia: desenho instanciado por caractere em canvas (widget text-draw em Rust/WASM) mais um caminho de keyframes CSS (char-draw), ambos só desktop; sessões touch renderizam spans de palavra e tocam um fade de opacidade CSS. Propósito: fazer os títulos parecerem autografados no desktop — escritos diante de você em vez de carimbados — sem o custo de DOM por caractere nas GPUs móveis."
           },
           "ring-sheen": {
             "alt": "Borda de tile com brilho viajando pelo anel",
@@ -9658,6 +9669,15 @@
               "media": {
                 "height": "512",
                 "path": "awards/making-our-documentation-ai-ready-2026.png",
+                "width": "681"
+              }
+            },
+            {
+              "description": "13 de nov. de 2026:<br>Segurança, Ownership e Excelência<span class=\"sr-only\"> Prêmio Cheers entregue por Marcelo Bacchieri, reconhecendo o pod DDS Website pelo fechamento de 134 vulnerabilidades Mythos dentro do SLA — demonstrando excelência técnica, disciplina de execução, trabalho em equipe, autogestão e uma abordagem altamente organizada que exigiu muito pouca supervisão.</span>",
+              "link": "https://storage.googleapis.com/luiskr.com/public/shared_items/awards/2026/Security%2C%20Ownership%2C%20and%20Excellence.pdf",
+              "media": {
+                "height": "512",
+                "path": "awards/security-ownership-and-excellence-2026.png",
                 "width": "681"
               }
             }
@@ -16977,6 +16997,8 @@
               [
                 "Em minha função atual dentro do Support POD e do Website POD, meu foco diário centra-se em impulsionar o Dell Design System para a frente usando fluxos de trabalho de IA Agêntica e metodologias de desenvolvimento orientadas a especificações.",
                 "Sintetizando anos de experiência prática em Vanilla JavaScript, React, Angular e Visualização de Dados com ferramentas modernas de IA, ajudo a arquitetar soluções de UI escaláveis, acessíveis e preparadas para o futuro.",
+                "Colocar esses princípios em prática exige tanto disciplina técnica quanto foco na experiência do desenvolvedor. Dentro do Website POD, isso significou enfrentar a estabilidade da plataforma organizando um esforço independente da equipe para encerrar 134 vulnerabilidades identificadas pelo Mythos dentro de um SLA rigoroso, uma iniciativa que rendeu reconhecimento por segurança, ownership e excelência técnica.",
+                "Da mesma forma, preparar nossas soluções para o futuro dentro do Support POD significou garantir que nossos recursos estivessem preparados para a próxima geração de desenvolvimento de software. Ao conduzir uma revisão aprofundada da nossa documentação de migração, identificamos lacunas importantes e elevamos a qualidade das nossas orientações. Isso não apenas ajudou os desenvolvedores que leem a documentação diretamente, mas também garantiu que nosso conteúdo estivesse totalmente pronto para IA, MCP e fluxos de trabalho automatizados.",
                 "O ecossistema de design systems continua a evoluir rapidamente, e sigo motivado para ajudar a liderar sua contínua transformação.",
                 "Confira o Dell Design System em: <a href='https://www.delldesignsystem.com' rel='noopener nofollow'>delldesignsystem.com</a>"
               ],
@@ -17088,7 +17110,7 @@
             "webgl"
           ],
           "date": "2026-10-11T23:18:16-03:00",
-          "modified": "2026-11-08T15:06:55-03:00"
+          "modified": "2026-11-16T13:07:27-03:00"
         }
       },
       "slugs": {
@@ -17506,7 +17528,7 @@
           },
           "text-draw": {
             "alt": "Texto dibujándose letra a letra como manuscrito",
-            "longdesc": "Títulos de sección, enlaces y leyendas con el tratamiento draw-text en todo el sitio. Animación: cada carácter se dibuja estilo trazo de pluma en orden de lectura — los trazos se escriben secuencialmente como caligrafía o plotter, con agrupación opcional por palabra. Disparador: se reproduce cuando el elemento entra en la viewport (IntersectionObserver, disparador viewport) o por dispatch explícito. Tecnología: dibujo instanciado por carácter en canvas (widget text-draw en Rust/WASM) con fallback en keyframe CSS (char-draw/word-draw). Propósito: hacer que los títulos parezcan autografiados — escritos frente a ti en vez de estampados."
+            "longdesc": "Títulos de sección, enlaces y leyendas con el tratamiento draw-text en todo el sitio. Animación: en escritorio con puntero fino, cada carácter se dibuja estilo trazo de pluma en orden de lectura — los trazos se escriben secuencialmente como caligrafía o plotter, con agrupación opcional por palabra; en dispositivos táctiles (móviles, tabletas) el dibujo por carácter se sustituye por un único fundido suave — el texto simplemente aparece. Disparador: se reproduce cuando el elemento entra en la viewport (IntersectionObserver, disparador viewport) o por dispatch explícito. Tecnología: dibujo instanciado por carácter en canvas (widget text-draw en Rust/WASM) más una ruta de keyframes CSS (char-draw), ambas solo escritorio; las sesiones táctiles renderizan spans de palabra y reproducen un fundido de opacidad CSS. Propósito: hacer que los títulos parezcan autografiados en escritorio — escritos frente a ti en vez de estampados — sin el coste de DOM por carácter en las GPU móviles."
           },
           "ring-sheen": {
             "alt": "Borde de tile con brillo viajando por el anillo",
@@ -18215,6 +18237,15 @@
               "media": {
                 "height": "512",
                 "path": "awards/making-our-documentation-ai-ready-2026.png",
+                "width": "681"
+              }
+            },
+            {
+              "description": "13 de nov. de 2026:<br>Seguridad, Ownership y Excelencia<span class=\"sr-only\"> Premio Cheers entregado por Marcelo Bacchieri, reconociendo al pod DDS Website por cerrar 134 vulnerabilidades Mythos dentro del SLA — demostrando excelencia técnica, disciplina de ejecución, trabajo en equipo, autogestión y un enfoque altamente organizado que requirió muy poca supervisión.</span>",
+              "link": "https://storage.googleapis.com/luiskr.com/public/shared_items/awards/2026/Security%2C%20Ownership%2C%20and%20Excellence.pdf",
+              "media": {
+                "height": "512",
+                "path": "awards/security-ownership-and-excellence-2026.png",
                 "width": "681"
               }
             }
@@ -25533,6 +25564,8 @@
               [
                 "En mi rol actual dentro del Support POD y el Website POD, mi enfoque diario se centra en impulsar el Dell Design System utilizando flujos de trabajo de IA Agéntica y metodologías de desarrollo guiadas por especificaciones.",
                 "Al sintetizar años de experiencia práctica en Vanilla JavaScript, React, Angular y Visualización de Datos con herramientas modernas de IA, colaboro en la arquitectura de soluciones de interfaz de usuario escalables, accesibles y preparadas para el futuro.",
+                "Poner estos principios en práctica requiere tanto disciplina técnica como un enfoque en la experiencia del desarrollador. Dentro del Website POD, esto significó abordar la estabilidad de la plataforma organizando un esfuerzo independiente del equipo para cerrar 134 vulnerabilidades detectadas por Mythos dentro de un SLA estricto, una iniciativa que obtuvo reconocimiento por seguridad, ownership y excelencia técnica.",
+                "De manera similar, preparar nuestras soluciones para el futuro dentro del Support POD significó asegurar que nuestros recursos estuvieran listos para la próxima generación de desarrollo de software. Al realizar una revisión exhaustiva de nuestra documentación de migración, identificamos lagunas clave y elevamos la calidad de nuestras guías. Esto no solo ayudó a los desarrolladores que leen la documentación directamente, sino que también garantizó que nuestro contenido estuviera totalmente preparado para IA, MCP y flujos de trabajo automatizados.",
                 "El ecosistema de design systems sigue evolucionando con rapidez y sigo con total energía para liderar su continua transformación.",
                 "Descubre el Dell Design System en: <a href='https://www.delldesignsystem.com' rel='noopener nofollow'>delldesignsystem.com</a>"
               ],
@@ -25644,7 +25677,7 @@
             "webgl"
           ],
           "date": "2026-10-11T23:18:16-03:00",
-          "modified": "2026-11-08T15:06:55-03:00"
+          "modified": "2026-11-16T13:07:27-03:00"
         }
       },
       "slugs": {
@@ -26062,7 +26095,7 @@
           },
           "text-draw": {
             "alt": "Text zeichnet sich Buchstabe für Buchstabe wie handschriftlich",
-            "longdesc": "Bereichstitel, Links und Bildunterschriften mit dem Draw-Text-Treatment auf der ganzen Site. Animation: jedes Zeichen wird federstrich-artig in Lesereihenfolge gezeichnet — Striche schreiben sich sequenziell wie Handschrift oder Plotter, optional mit Wortgruppierung. Auslöser: spielt, wenn das Element in die Viewport scrollt (IntersectionObserver, Viewport-Trigger) oder per explizitem Dispatch. Technik: instanziertes Pro-Zeichen-Zeichnen auf Canvas (Rust/WASM-text-draw-Widget) mit CSS-Keyframe-Fallback (char-draw/word-draw). Zweck: lässt Überschriften handschriftlich wirken — vor den Augen geschrieben statt gestempelt."
+            "longdesc": "Bereichstitel, Links und Bildunterschriften mit dem Draw-Text-Treatment auf der ganzen Site. Animation: auf Desktop-Rechnern mit feinem Zeiger wird jedes Zeichen federstrich-artig in Lesereihenfolge gezeichnet — Striche schreiben sich sequenziell wie Handschrift oder Plotter, optional mit Wortgruppierung; auf Touch-Geräten (Smartphones, Tablets) ersetzt ein einzelner sanfter Fade das Zeichen-für-Zeichen-Zeichnen — der Text blendet einfach ein. Auslöser: spielt, wenn das Element in die Viewport scrollt (IntersectionObserver, Viewport-Trigger) oder per explizitem Dispatch. Technik: instanziertes Pro-Zeichen-Zeichnen auf Canvas (Rust/WASM-text-draw-Widget) plus ein CSS-Keyframe-Pfad (char-draw), beide nur Desktop; Touch-Sitzungen rendern Wort-Spans und spielen einen CSS-Opazitäts-Fade. Zweck: lässt Überschriften auf dem Desktop handschriftlich wirken — vor den Augen geschrieben statt gestempelt — ohne die Pro-Zeichen-DOM-Kosten auf mobilen GPUs."
           },
           "ring-sheen": {
             "alt": "Kachelrand mit um den Ring wanderndem Lichtschimmer",
@@ -26771,6 +26804,15 @@
               "media": {
                 "height": "512",
                 "path": "awards/making-our-documentation-ai-ready-2026.png",
+                "width": "681"
+              }
+            },
+            {
+              "description": "13. Nov. 2026:<br>Sicherheit, Ownership und Exzellenz<span class=\"sr-only\"> Cheers-Auszeichnung von Marcelo Bacchieri für den DDS-Website-POD für das Schließen von 134 Mythos-Schwachstellen innerhalb der SLA — mit technischer Exzellenz, Ausführungsdisziplin, Teamarbeit, Selbstmanagement und einem hochorganisierten Vorgehen, das kaum Aufsicht erforderte.</span>",
+              "link": "https://storage.googleapis.com/luiskr.com/public/shared_items/awards/2026/Security%2C%20Ownership%2C%20and%20Excellence.pdf",
+              "media": {
+                "height": "512",
+                "path": "awards/security-ownership-and-excellence-2026.png",
                 "width": "681"
               }
             }
@@ -34086,6 +34128,8 @@
               [
                 "In meiner aktuellen Funktion innerhalb des Support-PODs und des Website-PODs konzentriert sich mein täglicher Schwerpunkt darauf, das Dell Design System mithilfe von agentischen KI-Workflows und spezifikationsgetriebenen Entwicklungsmethoden voranzutreiben.",
                 "Indem ich jahrelange praktische Erfahrung in Vanilla JavaScript, React, Angular und Datenvisualisierung mit modernen KI-Werkzeugen verbinde, helfe ich bei der Architektur skalierbarer, barrierefreier und zukunftssicherer UI-Lösungen.",
+                "Die Umsetzung dieser Prinzipien in die Praxis erfordert sowohl technische Disziplin als auch einen Fokus auf die Developer Experience. Innerhalb des Website-PODs bedeutete dies, die Plattformstabilität anzugehen, indem ich eine unabhängige Teamleistung organisierte, um 134 von Mythos erkannte Schwachstellen innerhalb eines strengen SLA zu schließen – eine Initiative, die Anerkennung für Sicherheit, Ownership und technische Exzellenz einbrachte.",
+                "Ebenso bedeutete die Zukunftssicherung unserer Lösungen innerhalb des Support-PODs, sicherzustellen, dass unsere Ressourcen auf die nächste Generation der Softwareentwicklung vorbereitet sind. Durch eine gründliche Überprüfung unserer Migrationsdokumentation identifizierten wir zentrale Lücken und erhöhten die Qualität unserer Anleitung. Dies half nicht nur den menschlichen Entwicklerinnen und Entwicklern, die die Dokumentation direkt lesen, sondern stellte auch sicher, dass unsere Inhalte vollständig für KI, MCP und automatisierte Workflows bereit waren.",
                 "Das Ökosystem von Designsystemen entwickelt sich rasant weiter, und ich bleibe voller Energie, um seine kontinuierliche Transformation mitzugestalten.",
                 "Entdecken Sie das Dell Design System unter: <a href='https://www.delldesignsystem.com' rel='noopener nofollow'>delldesignsystem.com</a>"
               ],
@@ -34197,7 +34241,7 @@
             "webgl"
           ],
           "date": "2026-10-11T23:18:16-03:00",
-          "modified": "2026-11-08T15:06:55-03:00"
+          "modified": "2026-11-16T13:07:27-03:00"
         }
       },
       "slugs": {
@@ -34615,7 +34659,7 @@
           },
           "text-draw": {
             "alt": "Text zeichnet sich Buchstawe für Buchstawe wie handschriftlich",
-            "longdesc": "Bereichstitel, Links un Bildunnerschriffte mit em Draw-Text-Treatment uf der ganze Site. Animatsioon: jedes Zeiche wird feierstrich-artig in Lesereihefolg gezeichnet — Strich schreibe sich sequenziell wie Handschrift oder Plotter, optional mit Wortgruppierung. Usslöser: spielt, wenn des Element in die Viewport scrollt (IntersectionObserver, Viewport-Trigger) oder per explizitem Dispatch. Technik: instanziertes Pro-Zeiche-Zeichne uf Canvas (Rust/WASM-text-draw-Widget) mit CSS-Keyframe-Fallback (char-draw/word-draw). Zweck: lässt Überschriffte handschriftlich wirke — vor de Auge geschriewe statt gstempelt."
+            "longdesc": "Bereichstitel, Links un Bildunnerschriffte mit em Draw-Text-Treatment uf der ganze Site. Animasjon: uf Desktop-Rechner mit feine Zeiger wird jedes Zeiche federstrich-artig in Lesereihefolg gezeichnet — Strich schreibe sich sequenziell wie Handschrift oder Plotter, optional mit Wortgruppierung; uf Touch-Geräte (Smartphones, Tablets) ersetzt en einzelner sanfter Fade des Pro-Zeiche-Zeichne — de Text blendet einfach ein. Usslöser: spielt, wenn des Element in die Viewport scrollt (IntersectionObserver, Viewport-Trigger) oder per explizitem Dispatch. Technik: instanziertes Pro-Zeiche-Zeichne uf Canvas (Rust/WASM-text-draw-Widget) plus en CSS-Keyframe-Pfad (char-draw), beede nur Desktop; Touch-Sitzunge rendere Wort-Spans un spiele en CSS-Opazitäts-Fade. Zweck: lässt Überschriffte uf em Desktop handschriftlich wirke — vor de Auge geschriewe statt gstempelt — ohne de Pro-Zeiche-DOM-Koste uf mobile GPUs."
           },
           "ring-sheen": {
             "alt": "Kachelrand mit um der Ring wanderndem Lichtschimmer",
@@ -35324,6 +35368,15 @@
               "media": {
                 "height": "512",
                 "path": "awards/making-our-documentation-ai-ready-2026.png",
+                "width": "681"
+              }
+            },
+            {
+              "description": "13. Nov. 2026:<br>Sicherheit, Ownership un Exzellenz<span class=\"sr-only\"> Cheers-Auszeichnung fun Marcelo Bacchieri für den DDS-Website-POD für das Schließe von 134 Mythos-Schwachstelle innerhalb der SLA — mit technische Exzellenz, Ausführungsdisziplin, Teamarbeit, Selbstmanagement un einem hochorganisiertes Vorgehe, das kaum Aufsicht erforderte.</span>",
+              "link": "https://storage.googleapis.com/luiskr.com/public/shared_items/awards/2026/Security%2C%20Ownership%2C%20and%20Excellence.pdf",
+              "media": {
+                "height": "512",
+                "path": "awards/security-ownership-and-excellence-2026.png",
                 "width": "681"
               }
             }
@@ -42641,6 +42694,8 @@
               [
                 "In meiner aktuellen Funktion innerhalb des Support-PODs und des Website-PODs konzentriert sich mein täglicher Schwerpunkt darauf, das Dell Design System mithilfe von agentischen KI-Workflows und spezifikationsgetriebenen Entwicklungsmethoden voranzutreiben.",
                 "Indem ich jahrelange praktische Erfahrung in Vanilla JavaScript, React, Angular und Datenvisualisierung mit modernen KI-Werkzeugen verbinde, helfe ich bei der Architektur skalierbarer, barrierefreier und zukunftssicherer UI-Lösungen.",
+                "Die Umsetzung dieser Prinzipien in die Praxis erfordert sowohl technische Disziplin als auch einen Fokus auf die Developer Experience. Innerhalb des Website-PODs bedeutete dies, die Plattformstabilität anzugehen, indem ich eine unabhängige Teamleistung organisierte, um 134 von Mythos erkannte Schwachstellen innerhalb eines strengen SLA zu schließen – eine Initiative, die Anerkennung für Sicherheit, Ownership und technische Exzellenz einbrachte.",
+                "Ebenso bedeutete die Zukunftssicherung unserer Lösungen innerhalb des Support-PODs, sicherzustellen, dass unsere Ressourcen auf die nächste Generation der Softwareentwicklung vorbereitet sind. Durch eine gründliche Überprüfung unserer Migrationsdokumentation identifizierten wir zentrale Lücken und erhöhten die Qualität unserer Anleitung. Dies half nicht nur den menschlichen Entwicklerinnen und Entwicklern, die die Dokumentation direkt lesen, sondern stellte auch sicher, dass unsere Inhalte vollständig für KI, MCP und automatisierte Workflows bereit waren.",
                 "Das Ökosystem von Designsystemen entwickelt sich rasant weiter, und ich bleibe voller Energie, um seine kontinuierliche Transformation mitzugestalten.",
                 "Entdecken Sie das Dell Design System unter: <a href='https://www.delldesignsystem.com' rel='noopener nofollow'>delldesignsystem.com</a>"
               ],
@@ -42752,7 +42807,7 @@
             "webgl"
           ],
           "date": "2026-10-11T23:18:16-03:00",
-          "modified": "2026-11-08T15:06:55-03:00"
+          "modified": "2026-11-16T13:07:27-03:00"
         }
       },
       "slugs": {
@@ -43170,7 +43225,7 @@
           },
           "text-draw": {
             "alt": "Texto dibujándose letra por letra como manuscrito",
-            "longdesc": "Títulos de sección, enlaces y leyendas con el tratamiento draw-text en todo el sitio. Animación: cada carácter se dibuja estilo trazo de pluma en orden de lectura — los trazos se escriben secuencialmente como caligrafía o plotter, con agrupación opcional por palabra. Disparador: se reproduce cuando el elemento entra en la viewport (IntersectionObserver, disparador viewport) o por dispatch explícito. Tecnología: dibujo instanciado por carácter en canvas (widget text-draw en Rust/WASM) con fallback en keyframe CSS (char-draw/word-draw). Propósito: hacer que los títulos parezcan autografiados — escritos frente tuyo en vez de estampados."
+            "longdesc": "Títulos de sección, enlaces y leyendas con el tratamiento draw-text en todo el sitio. Animación: en escritorio con puntero fino, cada carácter se dibuja estilo trazo de pluma en orden de lectura — los trazos se escriben secuencialmente como caligrafía o plotter, con agrupación opcional por palabra; en dispositivos táctiles (móviles, tabletas) el dibujo por carácter se sustituye por un único fundido suave — el texto simplemente aparece. Disparador: se reproduce cuando el elemento entra en la viewport (IntersectionObserver, disparador viewport) o por dispatch explícito. Tecnología: dibujo instanciado por carácter en canvas (widget text-draw en Rust/WASM) más una ruta de keyframes CSS (char-draw), ambas solo escritorio; las sesiones táctiles renderizan spans de palabra y reproducen un fundido de opacidad CSS. Propósito: hacer que los títulos parezcan autografiados en escritorio — escritos frente tuyo en vez de estampados — sin el coste de DOM por carácter en las GPU móviles."
           },
           "ring-sheen": {
             "alt": "Borde de tile con brillo viajando por el anillo",
@@ -43879,6 +43934,15 @@
               "media": {
                 "height": "512",
                 "path": "awards/making-our-documentation-ai-ready-2026.png",
+                "width": "681"
+              }
+            },
+            {
+              "description": "13 de nov. de 2026:<br>Seguridad, Ownership y Excelencia<span class=\"sr-only\"> Premio Cheers entregado por Marcelo Bacchieri, reconociendo al pod DDS Website por cerrar 134 vulnerabilidades Mythos dentro del SLA — demostrando excelencia técnica, disciplina de ejecución, trabajo en equipo, autogestión y un enfoque altamente organizado que requirió muy poca supervisión.</span>",
+              "link": "https://storage.googleapis.com/luiskr.com/public/shared_items/awards/2026/Security%2C%20Ownership%2C%20and%20Excellence.pdf",
+              "media": {
+                "height": "512",
+                "path": "awards/security-ownership-and-excellence-2026.png",
                 "width": "681"
               }
             }
@@ -51197,6 +51261,8 @@
               [
                 "En mi rol actual dentro del Support POD y el Website POD, mi enfoque diario se centra en impulsar el Dell Design System utilizando flujos de trabajo de IA Agéntica y metodologías de desarrollo guiadas por especificaciones.",
                 "Al sintetizar años de experiencia práctica en Vanilla JavaScript, React, Angular y Visualización de Datos con herramientas modernas de IA, colaboro en la arquitectura de soluciones de interfaz de usuario escalables, accesibles y preparadas para el futuro.",
+                "Poner estos principios en práctica requiere tanto disciplina técnica como un enfoque en la experiencia del desarrollador. Dentro del Website POD, esto significó abordar la estabilidad de la plataforma organizando un esfuerzo independiente del equipo para cerrar 134 vulnerabilidades detectadas por Mythos dentro de un SLA estricto, una iniciativa que obtuvo reconocimiento por seguridad, ownership y excelencia técnica.",
+                "De manera similar, preparar nuestras soluciones para el futuro dentro del Support POD significó asegurar que nuestros recursos estuvieran listos para la próxima generación de desarrollo de software. Al realizar una revisión exhaustiva de nuestra documentación de migración, identificamos lagunas clave y elevamos la calidad de nuestras guías. Esto no solo ayudó a los desarrolladores que leen la documentación directamente, sino que también garantizó que nuestro contenido estuviera totalmente preparado para IA, MCP y flujos de trabajo automatizados.",
                 "El ecosistema de design systems sigue evolucionando con rapidez y sigo con total energía para liderar su continua transformación.",
                 "Descubre el Dell Design System en: <a href='https://www.delldesignsystem.com' rel='noopener nofollow'>delldesignsystem.com</a>"
               ],
@@ -51308,7 +51374,7 @@
             "webgl"
           ],
           "date": "2026-10-11T23:18:16-03:00",
-          "modified": "2026-11-08T15:06:55-03:00"
+          "modified": "2026-11-16T13:07:27-03:00"
         }
       },
       "slugs": {
@@ -51726,7 +51792,7 @@
           },
           "text-draw": {
             "alt": "Texto dibujándose letra por letra como manuscrito",
-            "longdesc": "Títulos de sección, enlaces y leyendas con el tratamiento draw-text en todo el sitio. Animación: cada carácter se dibuja estilo trazo de pluma en orden de lectura — los trazos se escriben secuencialmente como caligrafía o plotter, con agrupación opcional por palabra. Disparador: toca cuando el elemento entra en la viewport (IntersectionObserver, disparador viewport) o por dispatch explícito. Tecnología: dibujo instanciado por carácter en canvas (widget text-draw en Rust/WASM) con fallback en keyframe CSS (char-draw/word-draw). Propósito: hacer que los títulos parezcan autografiados — escritos frente a vos en vez de estampados."
+            "longdesc": "Títulos de sección, enlaces y leyendas con el tratamiento draw-text en todo el sitio. Animación: en escritorio con puntero fino, cada carácter se dibuja estilo trazo de pluma en orden de lectura — los trazos se escriben secuencialmente como caligrafía o plotter, con agrupación opcional por palabra; en dispositivos táctiles (móviles, tabletas) el dibujo por carácter se sustituye por un único fundido suave — el texto simplemente aparece. Disparador: se reproduce cuando el elemento entra en la viewport (IntersectionObserver, disparador viewport) o por dispatch explícito. Tecnología: dibujo instanciado por carácter en canvas (widget text-draw en Rust/WASM) más una ruta de keyframes CSS (char-draw), ambas solo escritorio; las sesiones táctiles renderizan spans de palabra y reproducen un fundido de opacidad CSS. Propósito: hacer que los títulos parezcan autografiados en escritorio — escritos frente a vos en vez de estampados — sin el coste de DOM por carácter en las GPU móviles."
           },
           "ring-sheen": {
             "alt": "Borde de tile con brillo viajando por el anillo",
@@ -52435,6 +52501,15 @@
               "media": {
                 "height": "512",
                 "path": "awards/making-our-documentation-ai-ready-2026.png",
+                "width": "681"
+              }
+            },
+            {
+              "description": "13 de nov. de 2026:<br>Segurança, Ownership e Excelência<span class=\"sr-only\"> Prêmio Cheers entregue por Marcelo Bacchieri, reconhecendo o pod DDS Website pelo fechamento de 134 vulnerabilidades Mythos dentro do SLA — demonstrando excelência técnica, disciplina de execução, trabalho em equipe, autogestão e uma abordagem altamente organizada que exigiu muito pouca supervisão.</span>",
+              "link": "https://storage.googleapis.com/luiskr.com/public/shared_items/awards/2026/Security%2C%20Ownership%2C%20and%20Excellence.pdf",
+              "media": {
+                "height": "512",
+                "path": "awards/security-ownership-and-excellence-2026.png",
                 "width": "681"
               }
             }
@@ -59754,6 +59829,8 @@
               [
                 "Em minha função atual dentro do Support POD e do Website POD, meu foco diário centra-se em impulsionar o Dell Design System para a frente usando fluxos de trabalho de IA Agêntica e metodologias de desenvolvimento orientadas a especificações.",
                 "Sintetizando anos de experiência prática em Vanilla JavaScript, React, Angular e Visualização de Dados com ferramentas modernas de IA, ajudo a arquitetar soluções de UI escaláveis, acessíveis e preparadas para o futuro.",
+                "Colocar esses princípios em prática exige tanto disciplina técnica quanto foco na experiência do desenvolvedor. Dentro do Website POD, isso significou enfrentar a estabilidade da plataforma organizando um esforço independente da equipe para encerrar 134 vulnerabilidades identificadas pelo Mythos dentro de um SLA rigoroso, uma iniciativa que rendeu reconhecimento por segurança, ownership e excelência técnica.",
+                "Da mesma forma, preparar nossas soluções para o futuro dentro do Support POD significou garantir que nossos recursos estivessem preparados para a próxima geração de desenvolvimento de software. Ao conduzir uma revisão aprofundada da nossa documentação de migração, identificamos lacunas importantes e elevamos a qualidade das nossas orientações. Isso não apenas ajudou os desenvolvedores que leem a documentação diretamente, mas também garantiu que nosso conteúdo estivesse totalmente pronto para IA, MCP e fluxos de trabalho automatizados.",
                 "O ecossistema de design systems continua a evoluir rapidamente, e sigo motivado para ajudar a liderar sua contínua transformação.",
                 "Confira o Dell Design System em: <a href='https://www.delldesignsystem.com' rel='noopener nofollow'>delldesignsystem.com</a>"
               ],
@@ -59865,7 +59942,7 @@
             "webgl"
           ],
           "date": "2026-10-11T23:18:16-03:00",
-          "modified": "2026-11-08T15:06:55-03:00"
+          "modified": "2026-11-16T13:07:27-03:00"
         }
       },
       "slugs": {
@@ -60283,7 +60360,7 @@
           },
           "text-draw": {
             "alt": "Texto ojejegua letra ha letra manuscrito ichaháicha",
-            "longdesc": "Sección título, link ha leyenda draw-text tratamiento rehegua sitio tuichakue. Ñemongue'e: peteĩteĩ carácter ojejegua pena trazo estilo ñemoñe'ẽ órden-pe — trazo ojejegua secuencialmente caligrafía térã plotter ichaháicha, ñe'ẽ agrupación opcional rehegua. Trigger: oñepyrũ elemento oikekuaa viewport-pe (IntersectionObserver, viewport trigger) térã dispatch explícito rupi. Tembiporenda: carácter instanciado dibujo canvas-pe (text-draw widget Rust/WASM-pe) CSS keyframe fallback rehegua (char-draw/word-draw). Haguã: ojapo título ojehechauka autografiado — ehechápe ojejegua estampado rã."
+            "longdesc": "Sección título, link ha leyenda draw-text tratamiento rehegua sitio tuichakue. Ñemongue'e: desktop-pe puntero michĩme, peteĩteĩ carácter ojejegua pena trazo estilo ñemoñe'ẽ órden-pe — trazo ojejegua secuencialmente caligrafía térã plotter ichaháicha, ñe'ẽ agrupación opcional rehegua; touch dispositivo-pe (móvil, tablet) carácter-pe jegua opavo ojegua rupi ojejapo fade javypa — tekto ojehechauka mante. Trigger: oñepyrũ elemento oikekuaa viewport-pe (IntersectionObserver, viewport trigger) térã dispatch explícito rupi. Tembiporenda: carácter instanciado dibujo canvas-pe (text-draw widget Rust/WASM-pe) plus CSS keyframe tape (char-draw), mokõiha desktop añoite; touch sesión ojehechauka ñe'ẽ span ha ojerure opacidad fade CSS. Haguã: ojapo título ojehechauka autografiado desktop-pe — ehechápe ojejegua estampado rã — DOM costo carácter-pe'ỹta mobile GPU-pe."
           },
           "ring-sheen": {
             "alt": "Tile borda tesa'ỹi ohóva anillo rupi",
@@ -60986,6 +61063,15 @@
               "media": {
                 "height": "512",
                 "path": "awards/making-our-documentation-ai-ready-2026.png",
+                "width": "681"
+              }
+            },
+            {
+              "description": "13 Jasypateĩramo 2026:<br>Seguridad, Ownership ha Excelencia<span class=\"sr-only\"> Cheers premio Marcelo Bacchieri ome’ẽva DDS Website POD-pe 134 Mythos vulnerabilidades ojejoko SLA-pehápe — ojuhu técnico excelencia, ejecución disciplina, teamwork, autogestión ha organizado enfoque orekova muy poca supervisión requisite.</span>",
+              "link": "https://storage.googleapis.com/luiskr.com/public/shared_items/awards/2026/Security%2C%20Ownership%2C%20and%20Excellence.pdf",
+              "media": {
+                "height": "512",
+                "path": "awards/security-ownership-and-excellence-2026.png",
                 "width": "681"
               }
             }
@@ -68194,6 +68280,8 @@
               [
                 "Che rembiapo ko'ág̃agua Support POD ha Website POD ryepýpe, amba'apo ára ha ára Dell Design System tenonde gotyo Agentic AI ha Spec-Driven metodologías rupive.",
                 "Amoirũvo heta ary rembiasakue Vanilla JavaScript, React, Angular ha Data Visualization herramientas IA modernas ndive, aipytyvõ UI soluciones oñemopu'ã porãva, opavavépe g̃uarã ha ko'ẽrõ g̃uarãva.",
+                "Ko princípio ojapo práctica-pe orekote disciplina técnica ha developer experience-pe oha'ãramo. Website POD-pe, ko mba'e ojejapo plataforma estabilidad-pe omotenondeva equipo independiente rembiapo ojejuhu 134 vulnerabilidades Mythos rupive SLA estricto-pe, iniciativa orekotey ojehechauka seguridad, ownership ha excelencia técnica rupive.",
+                "Upéi, ore soluciones ko'ẽrõ g̃uarãva Support POD-pe ojejapo ore recursos oñemopu'ãva para siguiente generación desarrollo software reheve. Ore documentación migración revisión profunda rupive, rohechauka lagunas clave ha roporavo ore guía iporãve. Ko mba'e na'angami ojapo porãve desarrolloadores humanos ojehechauka documentación directamente, aveí orekotey ore contenido AI-ready MCP ha workflows automáticos rupive.",
                 "Design system tekoha oñembotuicha pya'e ha che aguereko mbarete aipytyvõ haguã ko ñemoambuépe.",
                 "Ehecha Dell Design System ko'ápe: <a href='https://www.delldesignsystem.com' rel='noopener nofollow'>delldesignsystem.com</a>"
               ],
@@ -68300,7 +68388,7 @@
             "webgl tembiporu"
           ],
           "date": "2026-10-11T23:18:16-03:00",
-          "modified": "2026-11-08T15:06:55-03:00"
+          "modified": "2026-11-16T13:07:27-03:00"
         }
       },
       "slugs": {
@@ -68718,7 +68806,7 @@
           },
           "text-draw": {
             "alt": "Testo che si disegna lettera per lettera come manoscritto",
-            "longdesc": "Titoli di sezione, link e didascalie con il trattamento draw-text in tutto il sito. Animazione: ogni carattere è disegnato stile tratto di penna in ordine di lettura — i tratti si scrivono sequenzialmente come calligrafia o plotter, con raggruppamento opzionale per parola. Trigger: parte quando l'elemento entra nella viewport (IntersectionObserver, trigger viewport) o su dispatch esplicito. Tecnologia: disegno instanziato per carattere su canvas (widget text-draw in Rust/WASM) con fallback keyframe CSS (char-draw/word-draw). Scopo: far sembrare i titoli autografati — scritti davanti a te invece di timbrati."
+            "longdesc": "Titoli di sezione, link e didascalie con il trattamento draw-text in tutto il sito. Animazione: su desktop con puntatore fine ogni carattere è disegnato stile tratto di penna in ordine di lettura — i tratti si scrivono sequenzialmente come calligrafia o plotter, con raggruppamento opzionale per parola; su dispositivi touch (telefono, tablet) il disegno per carattere è sostituito da un'unica dissolvenza leggera — il testo semplicemente appare. Trigger: parte quando l'elemento entra nella viewport (IntersectionObserver, trigger viewport) o su dispatch esplicito. Tecnologia: disegno instanziato per carattere su canvas (widget text-draw in Rust/WASM) più un percorso keyframe CSS (char-draw), entrambi solo desktop; le sessioni touch renderizzano span di parola e riproducono una dissolvenza di opacità CSS. Scopo: far sembrare i titoli autografati su desktop — scritti davanti a te invece di timbrati — senza il costo DOM per carattere sulle GPU mobile."
           },
           "ring-sheen": {
             "alt": "Bordo tile con bagliore che viaggia attorno all'anello",
@@ -69427,6 +69515,15 @@
               "media": {
                 "height": "512",
                 "path": "awards/making-our-documentation-ai-ready-2026.png",
+                "width": "681"
+              }
+            },
+            {
+              "description": "13 nov. 2026:<br>Sicurezza, Ownership ed Eccellenza<span class=\"sr-only\"> Premio Cheers consegnato da Marcelo Bacchieri al pod DDS Website per aver chiuso 134 vulnerabilità Mythos entro la SLA — dimostrando eccellenza tecnica, disciplina esecutiva, lavoro di squadra, autogestione e un approccio altamente organizzato che ha richiesto pochissima supervisione.</span>",
+              "link": "https://storage.googleapis.com/luiskr.com/public/shared_items/awards/2026/Security%2C%20Ownership%2C%20and%20Excellence.pdf",
+              "media": {
+                "height": "512",
+                "path": "awards/security-ownership-and-excellence-2026.png",
                 "width": "681"
               }
             }
@@ -76742,6 +76839,8 @@
               [
                 "Nel mio ruolo attuale all'interno del Support POD e del Website POD, il mio obiettivo quotidiano è far progredire il Dell Design System utilizzando flussi di lavoro di IA Agentica e metodologie di sviluppo guidate da specifiche.",
                 "Sintetizzando anni di esperienza pratica su Vanilla JavaScript, React, Angular e Visualizzazione Dati con moderni strumenti di IA, contribuisco all'architettura di soluzioni UI scalabili, accessibili e pronte per il futuro.",
+                "Mettere in pratica questi principi richiede sia disciplina tecnica sia attenzione all'esperienza dello sviluppatore. All'interno del Website POD, questo ha significato affrontare la stabilità della piattaforma organizzando uno sforzo indipendente del team per chiudere 134 vulnerabilità rilevate da Mythos rispettando un SLA rigoroso, un'iniziativa che ha ottenuto riconoscimenti per sicurezza, ownership ed eccellenza tecnica.",
+                "Allo stesso modo, rendere a prova di futuro le nostre soluzioni all'interno del Support POD ha significato assicurare che le nostre risorse fossero pronte per la prossima generazione di sviluppo software. Conducendo un'analisi approfondita della nostra documentazione di migrazione, abbiamo identificato lacune fondamentali e migliorato la qualità della nostra guida. Questo non solo ha aiutato gli sviluppatori che leggono direttamente la documentazione, ma ha anche garantito che i nostri contenuti fossero pienamente pronti per l'IA, per MCP e per i flussi di lavoro automatizzati.",
                 "L'ecosistema dei design system continua a evolversi rapidamente e resto motivato a contribuire alla sua costante trasformazione.",
                 "Scopri il Dell Design System su: <a href='https://www.delldesignsystem.com' rel='noopener nofollow'>delldesignsystem.com</a>"
               ],
@@ -76853,7 +76952,7 @@
             "webgl"
           ],
           "date": "2026-10-11T23:18:16-03:00",
-          "modified": "2026-11-08T15:06:55-03:00"
+          "modified": "2026-11-16T13:07:27-03:00"
         }
       },
       "slugs": {
@@ -77271,7 +77370,7 @@
           },
           "text-draw": {
             "alt": "Текст рисуется буква за буквой, как рукописный",
-            "longdesc": "Заголовки секций, ссылки и подписи с обработкой draw-text по всему сайту. Анимация: каждый символ рисуется перьевым штрихом в порядке чтения — штрихи пишутся последовательно, как каллиграфия или плоттер, с опциональной группировкой по словам. Триггер: срабатывает при входе элемента во вьюпорт (IntersectionObserver, viewport-триггер) или по явному dispatch. Технология: инстансированное посимвольное рисование на канвасе (виджет text-draw на Rust/WASM) с CSS-кейфрейм-фолбэком (char-draw/word-draw). Назначение: делает заголовки рукописными — написанными на глазах, а не отпечатанными."
+            "longdesc": "Заголовки секций, ссылки и подписи с обработкой draw-text по всему сайту. Анимация: на десктопах с точным указателем каждый символ рисуется перьевым штрихом в порядке чтения — штрихи пишутся последовательно, как каллиграфия или плоттер, с опциональной группировкой по словам; на сенсорных устройствах (телефоны, планшеты) посимвольное рисование заменяется одним лёгким проявлением — текст просто появляется. Триггер: срабатывает при входе элемента во вьюпорт (IntersectionObserver, viewport-триггер) или по явному dispatch. Технология: инстансированное посимвольное рисование на канвасе (виджет text-draw на Rust/WASM) плюс CSS-кейфрейм-путь (char-draw), оба только для десктопа; сенсорные сессии рендерят словесные спаны и проигрывают CSS-затухание по прозрачности. Назначение: делает заголовки рукописными на десктопе — написанными на глазах, а не отпечатанными — без посимвольной DOM-цены на мобильных GPU."
           },
           "ring-sheen": {
             "alt": "Край плитки с бликом, бегущим по кольцу",
@@ -77981,6 +78080,15 @@
               "media": {
                 "height": "512",
                 "path": "awards/making-our-documentation-ai-ready-2026.png",
+                "width": "681"
+              }
+            },
+            {
+              "description": "13 ноября 2026:<br>Безопасность, ответственность и совершенство<span class=\"sr-only\"> Награда Cheers от Marcelo Bacchieri команде DDS Website POD за закрытие 134 уязвимостей Mythos в рамках SLA — демонстрация технического совершенства, исполнительской дисциплины, командной работы, самостоятельности и высокоорганизованного подхода, потребовавшего минимального контроля.</span>",
+              "link": "https://storage.googleapis.com/luiskr.com/public/shared_items/awards/2026/Security%2C%20Ownership%2C%20and%20Excellence.pdf",
+              "media": {
+                "height": "512",
+                "path": "awards/security-ownership-and-excellence-2026.png",
                 "width": "681"
               }
             }
@@ -85331,6 +85439,8 @@
               [
                 "В моей текущей роли в Support POD и Website POD мое ежедневное внимание сосредоточено на развитии Dell Design System с помощью рабочих процессов агентного ИИ и методологий разработки на основе спецификаций.",
                 "Объединяя многолетний практический опыт работы с Vanilla JavaScript, React, Angular и визуализацией данных с современными инструментами ИИ, я помогаю проектировать масштабируемые, доступные и перспективные решения пользовательского интерфейса.",
+                "Воплощение этих принципов на практике требует как технической дисциплины, так и внимания к опыту разработчика. Внутри Website POD это означало работу над стабильностью платформы через организацию независимой командной инициативы по устранению 134 уязвимостей Mythos в рамках строгого SLA — инициативы, получившей признание за безопасность, ответственность и техническое совершенство.",
+                "Аналогичным образом, подготовка наших решений к будущему внутри Support POD означала обеспечение готовности наших ресурсов к следующему поколению разработки программного обеспечения. Проведя глубокий анализ нашей документации по миграции, мы выявили ключевые пробелы и повысили качество наших руководств. Это не только помогло разработчикам, читающим документацию напрямую, но и гарантировало, что наши материалы полностью готовы для ИИ, MCP и автоматизированных рабочих процессов.",
                 "Экосистема дизайн-систем продолжает стремительно развиваться, и я полон энергии помогать направлять ее непрерывную трансформацию.",
                 "Познакомьтесь с Dell Design System на: <a href='https://www.delldesignsystem.com' rel='noopener nofollow'>delldesignsystem.com</a>"
               ],
@@ -85444,7 +85554,7 @@
             "webgl"
           ],
           "date": "2026-10-11T23:18:16-03:00",
-          "modified": "2026-11-08T15:06:55-03:00"
+          "modified": "2026-11-16T13:07:27-03:00"
         }
       },
       "slugs": {
@@ -85862,7 +85972,7 @@
           },
           "text-draw": {
             "alt": "Texte se dessinant lettre par lettre comme un manuscrit",
-            "longdesc": "Titres de section, liens et légendes avec le traitement draw-text sur tout le site. Animation : chaque caractère est dessiné style trait de plume dans l'ordre de lecture — les traits s'écrivent séquentiellement comme une calligraphie ou un plotter, avec regroupement optionnel par mot. Déclencheur : se joue quand l'élément entre dans la viewport (IntersectionObserver, déclencheur viewport) ou sur dispatch explicite. Technologie : dessin instancié par caractère sur canvas (widget text-draw en Rust/WASM) avec repli keyframe CSS (char-draw/word-draw). Objectif : faire paraître les titres autographiés — écrits sous vos yeux plutôt qu'estampillés."
+            "longdesc": "Titres de section, liens et légendes avec le traitement draw-text sur tout le site. Animation : sur desktop à pointeur fin, chaque caractère est dessiné style trait de plume dans l'ordre de lecture — les traits s'écrivent séquentiellement comme une calligraphie ou un plotter, avec regroupement optionnel par mot ; sur appareils tactiles (téléphones, tablettes), le dessin par caractère est remplacé par un unique fondu léger — le texte apparaît simplement. Déclencheur : se joue quand l'élément entre dans la viewport (IntersectionObserver, déclencheur viewport) ou sur dispatch explicite. Technologie : dessin instancié par caractère sur canvas (widget text-draw en Rust/WASM) plus un chemin keyframe CSS (char-draw), tous deux desktop uniquement ; les sessions tactiles rendent des spans de mots et jouent un fondu d'opacité CSS. Objectif : faire paraître les titres autographiés sur desktop — écrits sous vos yeux plutôt qu'estampillés — sans le coût DOM par caractère sur les GPU mobiles."
           },
           "ring-sheen": {
             "alt": "Bord de tuile avec reflet voyageant autour de l'anneau",
@@ -86571,6 +86681,15 @@
               "media": {
                 "height": "512",
                 "path": "awards/making-our-documentation-ai-ready-2026.png",
+                "width": "681"
+              }
+            },
+            {
+              "description": "13 nov. 2026 :<br>Sécurité, appropriation et excellence<span class=\"sr-only\"> Prix Cheers remis par Marcelo Bacchieri au pod DDS Website pour avoir fermé 134 vulnérabilités Mythos dans les délais SLA — démontrant excellence technique, discipline d’exécution, travail d’équipe, autonomie et une approche hautement organisée qui a demandé très peu de supervision.</span>",
+              "link": "https://storage.googleapis.com/luiskr.com/public/shared_items/awards/2026/Security%2C%20Ownership%2C%20and%20Excellence.pdf",
+              "media": {
+                "height": "512",
+                "path": "awards/security-ownership-and-excellence-2026.png",
                 "width": "681"
               }
             }
@@ -93886,6 +94005,8 @@
               [
                 "Dans mon rôle actuel au sein du Support POD et du Website POD, mon travail quotidien consiste à faire progresser le Dell Design System à l'aide de flux de travail d'IA Agentique et de méthodologies de développement guidées par les spécifications.",
                 "En synthétisant des années d'expérience pratique sur Vanilla JavaScript, React, Angular et la visualisation de données avec des outils d'IA modernes, je contribue à concevoir des solutions d'interface évolutives, accessibles et pérennes.",
+                "Mettre ces principes en pratique exige à la fois une discipline technique et une attention portée à l'expérience développeur. Au sein du Website POD, cela a signifié s'attaquer à la stabilité de la plateforme en organisant un effort d'équipe indépendant pour résoudre 134 vulnérabilités détectées par Mythos dans le respect d'un SLA strict, une initiative qui a été récompensée pour la sécurité, l'ownership et l'excellence technique.",
+                "De même, préparer nos solutions à l'avenir au sein du Support POD a signifié s'assurer que nos ressources étaient prêtes pour la prochaine génération de développement logiciel. En menant une revue approfondie de notre documentation de migration, nous avons identifié des lacunes majeures et élevé la qualité de nos guides. Cela a non seulement aidé les développeurs qui lisent directement la documentation, mais a aussi garanti que nos contenus étaient entièrement prêts pour l'IA, pour MCP et pour les flux de travail automatisés.",
                 "L'écosystème des design systems continue d'évoluer rapidement et je reste pleinement mobilisé pour contribuer à sa transformation continue.",
                 "Découvrez le Dell Design System sur : <a href='https://www.delldesignsystem.com' rel='noopener nofollow'>delldesignsystem.com</a>"
               ],
@@ -93997,7 +94118,7 @@
             "webgl"
           ],
           "date": "2026-10-11T23:18:16-03:00",
-          "modified": "2026-11-08T15:06:55-03:00"
+          "modified": "2026-11-16T13:07:27-03:00"
         }
       },
       "slugs": {
@@ -94415,7 +94536,7 @@
           },
           "text-draw": {
             "alt": "Testo che el se desegna letera par letera come manoscrito",
-            "longdesc": "Titoli de session, link e didascalie co el tratamento draw-text in tuto el sito. Animassion: ogni caratere el xe desegnà stil tratto de pena in órdene de letùra — i trati i se scrive sequensialmente come caligrafìa o plotter, co ragrupamento opsionale par paroła. Trigger: el parte quando l'elemento el entra inte la viewport (IntersectionObserver, trigger viewport) o su dispatch esplicito. Tecnologia: desegno instansià par caratere su canvas (widget text-draw in Rust/WASM) co fallback keyframe CSS (char-draw/word-draw). Scopo: far sembrar i titoli autografadi — scriti avanti a ti invesse de timbradi."
+            "longdesc": "Titoli de session, link e didascalie co el tratamento draw-text in tuto el sito. Animassion: su desktop co pontador fine ogni caratere el xe desegnà stil tratto de pena in órdene de letùra — i trati i se scrive sequensialmente come caligrafìa o plotter, co ragrupamento opsionale par paroła; su disposełivi touch (telefon, tablet) el desegno par caratere el vien sostituìo da na unica scorxada legiera — el testo el compare senpliçemente. Trigger: el parte quando l'elemento el entra inte la viewport (IntersectionObserver, trigger viewport) o su dispatch esplicito. Tecnologia: desegno instansià par caratere su canvas (widget text-draw in Rust/WASM) pi na via keyframe CSS (char-draw), tuti do so desktop; łe sesion touch łe rendi span de parołe e łe faze na scorxada de opacità CSS. Scopo: far semblar i titoli autografadi su desktop — scriti avanti a ti invesse de timbradi — sensa el costo DOM par caratere so łe GPU mòbiłi."
           },
           "ring-sheen": {
             "alt": "Bordo tile co sbarluso che el viaja atorno a l'anelo",
@@ -95124,6 +95245,15 @@
               "media": {
                 "height": "512",
                 "path": "awards/making-our-documentation-ai-ready-2026.png",
+                "width": "681"
+              }
+            },
+            {
+              "description": "13 Novenbre 2026:<br>Sicurésa, Ownership e Ecełensa<span class=\"sr-only\"> Premio Cheers dà da Marcelo Bacchieri al pod DDS Website par aver sarà 134 vulnerabilità Mythos dentro ła SLA — dimostrando ecełensa tecnega, disciplina de esecusion, lavoro de squa, autogestion e un aprocio tanto organizà che el gà volù pochissima sorvejansa.</span>",
+              "link": "https://storage.googleapis.com/luiskr.com/public/shared_items/awards/2026/Security%2C%20Ownership%2C%20and%20Excellence.pdf",
+              "media": {
+                "height": "512",
+                "path": "awards/security-ownership-and-excellence-2026.png",
                 "width": "681"
               }
             }
@@ -102441,6 +102571,8 @@
               [
                 "Nel mio ruolo attuale all'interno del Support POD e del Website POD, il mio obiettivo quotidiano è far progredire il Dell Design System utilizzando flussi di lavoro di IA Agentica e metodologie di sviluppo guidate da specifiche.",
                 "Sintetizzando anni di esperienza pratica su Vanilla JavaScript, React, Angular e Visualizzazione Dati con moderni strumenti di IA, contribuisco all'architettura di soluzioni UI scalabili, accessibili e pronte per il futuro.",
+                "Mettere in pratica questi principi richiede sia disciplina tecnica sia attenzione all'esperienza dello sviluppatore. All'interno del Website POD, questo ha significato affrontare la stabilità della piattaforma organizzando uno sforzo indipendente del team per chiudere 134 vulnerabilità rilevate da Mythos rispettando un SLA rigoroso, un'iniziativa che ha ottenuto riconoscimenti per sicurezza, ownership ed eccellenza tecnica.",
+                "Allo stesso modo, rendere a prova di futuro le nostre soluzioni all'interno del Support POD ha significato assicurare che le nostre risorse fossero pronte per la prossima generazione di sviluppo software. Conducendo un'analisi approfondita della nostra documentazione di migrazione, abbiamo identificato lacune fondamentali e migliorato la qualità della nostra guida. Questo non solo ha aiutato gli sviluppatori che leggono direttamente la documentazione, ma ha anche garantito che i nostri contenuti fossero pienamente pronti per l'IA, per MCP e per i flussi di lavoro automatizzati.",
                 "L'ecosistema dei design system continua a evolversi rapidamente e resto motivato a contribuire alla sua costante trasformazione.",
                 "Scopri il Dell Design System su: <a href='https://www.delldesignsystem.com' rel='noopener nofollow'>delldesignsystem.com</a>"
               ],
@@ -102552,7 +102684,7 @@
             "webgl"
           ],
           "date": "2026-10-11T23:18:16-03:00",
-          "modified": "2026-11-08T15:06:55-03:00"
+          "modified": "2026-11-16T13:07:27-03:00"
         }
       },
       "slugs": {
@@ -102970,7 +103102,7 @@
           },
           "text-draw": {
             "alt": "Tekst tekent zichzelf letter voor letter als handschrift",
-            "longdesc": "Sectietitels, links en bijschriften met de draw-text-behandeling over de hele site. Animatie: elk teken wordt penstreekgewijs in leesvolgorde getekend — lijnen schrijven zich sequentieel als kalligrafie of plotter, met optionele woordgroepering. Trigger: speelt als het element de viewport inscrollt (IntersectionObserver, viewport-trigger) of bij expliciete dispatch. Technologie: geïnstantieerd per-teken-tekenen op canvas (Rust/WASM-text-draw-widget) met CSS-keyframe-fallback (char-draw/word-draw). Doel: laat koppen handgeschreven aanvoelen — voor je ogen geschreven in plaats van gestempeld."
+            "longdesc": "Sectietitels, links en bijschriften met de draw-text-behandeling over de hele site. Animatie: op desktop met fijne pointer wordt elk teken penstreekgewijs in leesvolgorde getekend — lijnen schrijven zich sequentieel als kalligrafie of plotter, met optionele woordgroepering; op touch-apparaten (telefoons, tablets) vervangt één zachte fade het teken-voor-teken-tekenen — de tekst verschijnt gewoon. Trigger: speelt als het element de viewport inscrollt (IntersectionObserver, viewport-trigger) of bij expliciete dispatch. Technologie: geïnstantieerd per-teken-tekenen op canvas (Rust/WASM-text-draw-widget) plus een CSS-keyframe-pad (char-draw), beide alleen desktop; touch-sessies renderen woord-spans en spelen een CSS-dekkingsfade. Doel: laat koppen op desktop handgeschreven aanvoelen — voor je ogen geschreven in plaats van gestempeld — zonder de per-teken DOM-kosten op mobiele GPU's."
           },
           "ring-sheen": {
             "alt": "Tegelrand met schimmer die rond de ring reist",
@@ -103679,6 +103811,15 @@
               "media": {
                 "height": "512",
                 "path": "awards/making-our-documentation-ai-ready-2026.png",
+                "width": "681"
+              }
+            },
+            {
+              "description": "13 nov. 2026:<br>Beveiliging, ownership en excellentie<span class=\"sr-only\"> Cheers-award uitgereikt door Marcelo Bacchieri aan de DDS Website POD voor het sluiten van 134 Mythos-kwetsbaarheden binnen de SLA — demonstratie van technologische excellentie, uitvoeringsdiscipline, teamwork, zelfmanagement en een sterk georganiseerde aanpak die weinig toezicht vereiste.</span>",
+              "link": "https://storage.googleapis.com/luiskr.com/public/shared_items/awards/2026/Security%2C%20Ownership%2C%20and%20Excellence.pdf",
+              "media": {
+                "height": "512",
+                "path": "awards/security-ownership-and-excellence-2026.png",
                 "width": "681"
               }
             }
@@ -110993,6 +111134,8 @@
               [
                 "In mijn huidige functie binnen de Support POD en de Website POD ligt mijn dagelijkse focus op het vooruithelpen van het Dell Design System met behulp van agentische AI-workflows en specificatiegedreven ontwikkelmethodologieën.",
                 "Door jarenlange praktijkervaring in Vanilla JavaScript, React, Angular en Datavisualisatie te combineren met moderne AI-tools, help ik bij het ontwerpen van schaalbare, toegankelijke en toekomstbestendige UI-oplossingen.",
+                "Het in de praktijk brengen van deze principes vereist zowel technische discipline als een focus op developer experience. Binnen de Website POD betekende dit het aanpakken van platformstabiliteit door een onafhankelijke teaminspanning te organiseren om 134 door Mythos gedetecteerde kwetsbaarheden binnen een strikte SLA te sluiten, een initiatief dat erkenning opleverde voor beveiliging, ownership en technische excellentie.",
+                "Op vergelijkbare wijze betekende het toekomstbestendig maken van onze oplossingen binnen de Support POD dat we ervoor zorgden dat onze middelen klaar waren voor de volgende generatie softwareontwikkeling. Door een diepgaande evaluatie van onze migratiedocumentatie uit te voeren, identificeerden we belangrijke hiaten en verhoogden we de kwaliteit van onze richtlijnen. Dit hielp niet alleen menselijke ontwikkelaars die de documentatie direct lezen, maar zorgde er ook voor dat onze content volledig AI-ready was voor MCP en geautomatiseerde workflows.",
                 "Het ecosysteem van design systems blijft zich razendsnel ontwikkelen en ik blijf vol energie om de voortdurende transformatie mee vorm te geven.",
                 "Bekijk het Dell Design System op: <a href='https://www.delldesignsystem.com' rel='noopener nofollow'>delldesignsystem.com</a>"
               ],
@@ -111104,7 +111247,7 @@
             "webgl"
           ],
           "date": "2026-10-11T23:18:16-03:00",
-          "modified": "2026-11-08T15:06:55-03:00"
+          "modified": "2026-11-16T13:07:27-03:00"
         }
       },
       "slugs": {
@@ -111522,7 +111665,7 @@
           },
           "text-draw": {
             "alt": "Text dibuixant-se lletra a lletra com a manuscrit",
-            "longdesc": "Títols de secció, enllaços i llegendes amb el tractament draw-text a tot el lloc. Animació: cada caràcter es dibuixa estil traç de ploma en ordre de lectura — els traços s'escriuen seqüencialment com cal·ligrafia o plotter, amb agrupació opcional per paraula. Disparador: es reprodueix quan l'element entra a la viewport (IntersectionObserver, disparador viewport) o per dispatch explícit. Tecnologia: dibuix instanciat per caràcter en canvas (widget text-draw en Rust/WASM) amb fallback en keyframe CSS (char-draw/word-draw). Propòsit: fer que els títols semblin autografiats — escrits davant teu en lloc d'estampats."
+            "longdesc": "Títols de secció, enllaços i llegendes amb el tractament draw-text a tot el lloc. Animació: en escriptori amb punter fi, cada caràcter es dibuixa estil traç de ploma en ordre de lectura — els traços s'escriuen seqüencialment com cal·ligrafia o plotter, amb agrupació opcional per paraula; en dispositius tàctils (mòbils, tauletes) el dibuix per caràcter es substitueix per un únic flaix suau — el text simplement apareix. Disparador: es reprodueix quan l'element entra a la viewport (IntersectionObserver, disparador viewport) o per dispatch explícit. Tecnologia: dibuix instanciat per caràcter en canvas (widget text-draw en Rust/WASM) més una ruta de keyframes CSS (char-draw), totes dues només escriptori; les sessions tàctils renderitzen spans de paraula i reprodueixen un flaix d'opacitat CSS. Propòsit: fer que els títols semblin autografiats en escriptori — escrits davant teu en lloc d'estampats — sense el cost de DOM per caràcter a les GPU mòbils."
           },
           "ring-sheen": {
             "alt": "Vora de tile amb brillantor viatjant per l'anell",
@@ -112231,6 +112374,15 @@
               "media": {
                 "height": "512",
                 "path": "awards/making-our-documentation-ai-ready-2026.png",
+                "width": "681"
+              }
+            },
+            {
+              "description": "13 de nov. de 2026:<br>Seguretat, ownership i excel·lència<span class=\"sr-only\"> Premi Cheers lliurat per Marcelo Bacchieri al pod DDS Website per tancar 134 vulnerabilitats Mythos dins del SLA — demostrant excel·lència tècnica, disciplina d’execució, treball en equip, autogestió i un enfocament altament organitzat que va requerir molt poca supervisió.</span>",
+              "link": "https://storage.googleapis.com/luiskr.com/public/shared_items/awards/2026/Security%2C%20Ownership%2C%20and%20Excellence.pdf",
+              "media": {
+                "height": "512",
+                "path": "awards/security-ownership-and-excellence-2026.png",
                 "width": "681"
               }
             }
@@ -119546,6 +119698,8 @@
               [
                 "En el meu rol actual dins del Support POD i del Website POD, el meu focus diari se centra a impulsar el Dell Design System endavant utilitzant fluxos de treball d'IA Agèntica i metodologies de desenvolupament guiades per especificacions.",
                 "Sintetitzant anys d'experiència pràctica en Vanilla JavaScript, React, Angular i Visualització de Dades amb eines d'IA modernes, ajudo a dissenyar l'arquitectura de solucions d'UI escalables, accessibles i preparades per al futur.",
+                "Posar aquests principis en pràctica requereix tant disciplina tècnica com un focus en l'experiència del desenvolupador. Dins del Website POD, això va significar abordar l'estabilitat de la plataforma organitzant un esforç d'equip independent per tancar 134 vulnerabilitats detectades per Mythos dins d'un SLA estricte, una iniciativa que va obtenir reconeixement per seguretat, ownership i excel·lència tècnica.",
+                "De manera similar, preparar les nostres solucions per al futur dins del Support POD va significar assegurar que els nostres recursos estiguessin preparats per a la propera generació de desenvolupament de programari. En dur a terme una revisió exhaustiva de la nostra documentació de migració, vam identificar mancances clau i vam elevar la qualitat de les nostres guies. Això no només va ajudar els desenvolupadors que llegeixen la documentació directament, sinó que també va garantir que el nostre contingut estigués totalment preparat per a la IA, per a MCP i per a fluxos de treball automatitzats.",
                 "L'ecosistema de design systems continua evolucionant ràpidament i mantinc tota l'energia per liderar la seva transformació continuada.",
                 "Descobreix el Dell Design System a: <a href='https://www.delldesignsystem.com' rel='noopener nofollow'>delldesignsystem.com</a>"
               ],
@@ -119657,7 +119811,7 @@
             "webgl"
           ],
           "date": "2026-10-11T23:18:16-03:00",
-          "modified": "2026-11-08T15:06:55-03:00"
+          "modified": "2026-11-16T13:07:27-03:00"
         }
       },
       "slugs": {
@@ -120075,7 +120229,7 @@
           },
           "text-draw": {
             "alt": "Texto debuxándose letra a letra como manuscrito",
-            "longdesc": "Títulos de sección, ligazóns e lendas co tratamento draw-text en todo o sitio. Animación: cada carácter debúxase estilo trazo de pluma en orde de lectura — os trazos escríbense secuencialmente como caligrafía ou plotter, con agrupación opcional por palabra. Disparador: tócase cando o elemento entra na viewport (IntersectionObserver, disparador viewport) ou por dispatch explícito. Tecnoloxía: debuxo instanciado por carácter en canvas (widget text-draw en Rust/WASM) con fallback en keyframe CSS (char-draw/word-draw). Propósito: facer que os títulos parezan autografados — escritos diante de ti en vez de estampados."
+            "longdesc": "Títulos de sección, ligazóns e lendas co tratamento draw-text en todo o sitio. Animación: en escritorio con punteiro fino, cada carácter debúxase estilo trazo de pluma en orde de lectura — os trazos escríbense secuencialmente como caligrafía ou plotter, con agrupación opcional por palabra; en dispositivos táctiles (móbiles, tabletas) o debuxo por carácter substitúese por unha única fusión suave — o texto simplemente aparece. Disparador: tócase cando o elemento entra na viewport (IntersectionObserver, disparador viewport) ou por dispatch explícito. Tecnoloxía: debuxo instanciado por carácter en canvas (widget text-draw en Rust/WASM) máis unha ruta de keyframes CSS (char-draw), ambas só escritorio; as sesións táctiles renderizan spans de palabra e reproducen unha fusión de opacidade CSS. Propósito: facer que os títulos parezan autografados en escritorio — escritos diante de ti en vez de estampados — sen o custo de DOM por carácter nas GPU móbils."
           },
           "ring-sheen": {
             "alt": "Bordo de tile con brillo viaxando polo anel",
@@ -120784,6 +120938,15 @@
               "media": {
                 "height": "512",
                 "path": "awards/making-our-documentation-ai-ready-2026.png",
+                "width": "681"
+              }
+            },
+            {
+              "description": "13 de nov. de 2026:<br>Seguridade, ownership e excelencia<span class=\"sr-only\"> Premio Cheers entregado por Marcelo Bacchieri ao pod DDS Website por pechar 134 vulnerabilidades Mythos dentro do SLA — demostrando excelencia técnica, disciplina de execución, traballo en equipo, autoxestión e unha abordaxe altamente organizada que requiriu moi pouca supervisión.</span>",
+              "link": "https://storage.googleapis.com/luiskr.com/public/shared_items/awards/2026/Security%2C%20Ownership%2C%20and%20Excellence.pdf",
+              "media": {
+                "height": "512",
+                "path": "awards/security-ownership-and-excellence-2026.png",
                 "width": "681"
               }
             }
@@ -128100,6 +128263,8 @@
               [
                 "No meu rol actual dentro do Support POD e do Website POD, o meu foco diario céntrase en impulsar o Dell Design System cara a adiante utilizando fluxos de traballo de IA Axéntica e metodoloxías de desenvolvemento guiadas por especificacións.",
                 "Sintetizando anos de experiencia práctica en Vanilla JavaScript, React, Angular e Visualización de Datos con modernas ferramentas de IA, colaboro no deseño arquitectónico de solucións de UI escalables, accesibles e preparadas para o futuro.",
+                "Poñer estes principios en práctica require tanto disciplina técnica como un foco na experiencia do desenvolvedor. Dentro do Website POD, isto significou enfrontar a estabilidade da plataforma organizando un esforzo independente do equipo para pechar 134 vulnerabilidades detectadas por Mythos dentro dun SLA estrito, unha iniciativa que obtivo recoñecemento por seguridade, ownership e excelencia técnica.",
+                "Do mesmo xeito, preparar as nosas solucións para o futuro dentro do Support POD significou garantir que os nosos recursos estiveran preparados para a próxima xeración de desenvolvemento de software. Ao realizar unha revisión exhaustiva da nosa documentación de migración, identificamos lagoas clave e elevamos a calidade das unhas guías. Isto non só axudou aos desenvolvedores que len a documentación directamente, senón que tamén garantiu que o noso contido estivera totalmente preparado para IA, para MCP e para fluxos de traballo automatizados.",
                 "O ecosistema de design systems segue evolucionando rapidamente e manteño toda a enerxía para liderar a súa continua transformación.",
                 "Descobre o Dell Design System en: <a href='https://www.delldesignsystem.com' rel='noopener nofollow'>delldesignsystem.com</a>"
               ],
@@ -128211,7 +128376,7 @@
             "webgl"
           ],
           "date": "2026-10-11T23:18:16-03:00",
-          "modified": "2026-11-08T15:06:55-03:00"
+          "modified": "2026-11-16T13:07:27-03:00"
         }
       },
       "slugs": {
@@ -128629,7 +128794,7 @@
           },
           "text-draw": {
             "alt": "Téacs ag tarraingt é féin litir ar litir mar lámhscríbhinn",
-            "longdesc": "Teidil rannóg, naisc agus fotheidil leis an gcoireáil draw-text ar fud an tsuímh. Beochan: tarraingítear gach carachtar stíl stríoc peann in ord léitheoireachta — scríobhann na stríoca iad féin go seicheamhach mar chailigrafacht nó plotter, le grúpáil roghnach in aghaidh focal. Spreagthóir: imríonn nuair a théann an eilimint isteach sa viewport (IntersectionObserver, spreagthóir viewport) nó ar dispatch sainráite. Teicneolaíocht: tarraingt ionsantaithe in aghaidh carachtar ar chanabhas (giuirléid text-draw in Rust/WASM) le cúltaca keyframe CSS (char-draw/word-draw). Cuspóir: déanann sé na teidil cosúil le sínithe láimhe — scríofa os do chomhair in ionad stampáilte."
+            "longdesc": "Teidil rannóg, naisc agus fotheidil leis an gcoireáil draw-text ar fud an tsuímh. Beochan: ar deasc le pointeoir mín, tarraingítear gach carachtar stíl stríoc peann in ord léitheoireachta — scríobhann na stríoca iad féin go seicheamhach mar chailigrafacht nó plotter, le grúpáil roghnach in aghaidh focal; ar ghléasanna tadhaill (fóin, táibléid) cuirtear an tarraingt in aghaidh carachtair in ionad dobhuite bog amháin — feictear an téacs go simplí. Spreagthóir: imríonn nuair a théann an eilimint isteach sa viewport (IntersectionObserver, spreagthóir viewport) nó ar dispatch sainráite. Teicneolaíocht: tarraingt ionsantaithe in aghaidh carachtar ar chanabhas (giuirléid text-draw in Rust/WASM) móide bealach keyframe CSS (char-draw), an dá cinn deasc amháin; rindreálann seisiúin tadhaill spans focal agus imríonn siad dobhuite opacity CSS. Cuspóir: déanann sé na teidil cosúil le sínithe láimhe — scríofa os do chomhair in ionad stampáilte."
           },
           "ring-sheen": {
             "alt": "Imeall tíle le loinnir ag taisteal timpeall an fháinne",
@@ -129337,6 +129502,15 @@
               "media": {
                 "height": "512",
                 "path": "awards/making-our-documentation-ai-ready-2026.png",
+                "width": "681"
+              }
+            },
+            {
+              "description": "13 Samhain 2026:<br>Slándáil, úinéireacht agus sárshaolús<span class=\"sr-only\"> Gradam Cheers bronnta ag Marcelo Bacchieri ar an bpod DDS Website as 134 laigeacht Mythos a dhúnadh laistigh den SLA — ag taispeáint sárshaolús teicniúil, smacht cur chun cinn, oibriú foirne, féinbhainistíocht agus cur chuige an-eagraithe a d’éiligh maoirseacht an-bheag.</span>",
+              "link": "https://storage.googleapis.com/luiskr.com/public/shared_items/awards/2026/Security%2C%20Ownership%2C%20and%20Excellence.pdf",
+              "media": {
+                "height": "512",
+                "path": "awards/security-ownership-and-excellence-2026.png",
                 "width": "681"
               }
             }
@@ -136646,6 +136820,8 @@
               [
                 "I mo ról reatha laistigh den Support POD agus an Website POD, díríonn mo phríomhfhócas laethúil ar Dell Design System a bhrú ar aghaidh ag baint úsáide as sreafaí oibre AI Ghníomhaireachta agus modheolaíochtaí forbartha faoi threoir sonraíochtaí.",
                 "Trí bhlianta de thaithí phraiticiúil a shintéisiú thar Vanilla JavaScript, React, Angular, agus Amharcléiriú Sonraí le huirlisí nua-aimseartha AI, cabhraím le réitigh Chomhéadain inscálaithe, inrochtana agus cruthúnas ar an todhchaí a ailtireachtú.",
+                "Éilíonn cur na bprionsabal seo i bhfeidhm araon smacht teicniúil agus béim ar eispéireas an fhorbróra. Laistigh den Website POD, chordaigh sé seo dul i ngleic le seasmhacht na harda trí iarracht foirne neamhspleách a eagrú chun 134 laigeachta a aimsíodh le Mythos a dhúnadh faoi SLA docht, tionscnamh a bhain aitheantas as an tslándáil, an úinéireacht agus an fheabhas teicniúil.",
+                "Ar an tslí chéanna, ullmhú ár réitigh don todhchaí laistigh den Support POD chordaigh sé ár n-acmhainní a chur in aiois don chéad ghlúin eile de fhorbairt bogearraí. Trí athbhreithniú domhain a dhéanamh ar ár ndoiciméadú imirce, shainaithníomar bearnaí tábhachtacha agus d'ardaíomar caighdeán ár dtreoracha. Níor chabhraigh sé seo le forbróirí daonna a léann an doiciméadú go díreach amháin, ach rinne sé ár n-ábhar a chur in aiois go hiomlán d'AI, do MCP agus do shreabhaí oibre uathoibrithe.",
                 "Leanann éiceachóras na gcóras dearaidh ag forbairt go tapa, agus tá mé lán d'fhuinneamh chun cabhrú lena chlaochlú leanúnach a threorú.",
                 "Féach ar Dell Design System ag: <a href='https://www.delldesignsystem.com' rel='noopener nofollow'>delldesignsystem.com</a>"
               ],
@@ -136757,7 +136933,7 @@
             "webgl"
           ],
           "date": "2026-10-11T23:18:16-03:00",
-          "modified": "2026-11-08T15:06:55-03:00"
+          "modified": "2026-11-16T13:07:27-03:00"
         }
       },
       "slugs": {
