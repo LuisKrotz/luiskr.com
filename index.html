@@ -274,6 +274,64 @@
         max-width: 100%;
         min-height: 100%;
       }
+
+      /* Pre-CSS boot contract — mirrors intro-loader.scss and the
+         %reader-offscreen block in _document.scss so the FIRST paint is
+         already correct while the tier stylesheet is still in flight.
+         Without this, a cold/slow load flashes the unstyled reader
+         article + bare loader markup before the designed veil lands. */
+
+      /* Opaque fullscreen veil — covers everything from the first frame;
+         suppressed for no-js documents (reader mode keeps the article)
+         and intro-skip (the intro already ran this session). */
+      html.no-js .intro-loader,
+      html.intro-skip .intro-loader {
+        display: none;
+      }
+
+      .intro-loader {
+        position: fixed;
+        inset: 0;
+        z-index: 100000;
+        overflow: hidden;
+        background-color: #040404;
+      }
+
+      /* Dynamic loader chrome (spinner/counter/title/bar) stays hidden
+         until JS adopts the node and marks it --live — same contract as
+         the external sheet. */
+      .intro-loader-content {
+        visibility: hidden;
+      }
+
+      /* Route-hero LQIP — the blurred preview that paints inside the
+         veil in the very first frame. */
+      .intro-loader-lqip {
+        position: absolute;
+        inset: 15%;
+        width: 70%;
+        height: 70%;
+        object-fit: cover;
+        opacity: 0.15;
+      }
+
+      .intro-loader-lqip--full {
+        inset: 2%;
+        width: 96%;
+        height: 96%;
+      }
+
+      /* Reader-mode article — parked offscreen immediately once JS is
+         live (html.js is swapped in by the head script); no-js documents
+         keep it fully readable by design. */
+      html.js .reader-content {
+        position: absolute;
+        right: 100vw;
+        top: 0;
+        width: 75ch;
+        height: 100vh;
+        overflow: hidden;
+      }
     </style>
 
     <!-- Static JSON-LD graph — id matches SCHEMA_STRINGS.JSON_LD_SCRIPT_ID so
