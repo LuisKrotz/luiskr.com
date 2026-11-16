@@ -201,4 +201,66 @@ test.describe('Layer 5 — Android Chromium flicker & thrash matrix', () => {
       expect(l).toBeLessThan(250)
     }
   })
+
+  /**
+   * Composited-layer census — the GPU-memory failure class behind the 5.3.x
+   * mobile reports (iOS Safari jetsam kills, Android missing-tile flicker and
+   * all-black frames). LayerTree is enabled only after the page settles (an
+   * agent enabled before navigation never delivers a tree) and a 1px wheel
+   * nudge forces a commit. Chrome rasters only tiles near the viewport, so
+   * each drawing layer counts at most 1.5 viewport widths × 2 viewport
+   * heights; the sum is normalised to viewport-equivalents (DPR cancels out)
+   * so one budget holds across every phone/tablet profile. Pre-fix 5.3.7
+   * measured 51 layers / ~33 VE on home and ~490 layers / ~107 VE on a
+   * project page; post-fix the matrix sits at 24–33 layers / 15–20 VE.
+   */
+  test.describe('composited-layer budget', () => {
+    const LAYER_BUDGET = { MAX_DRAWING_LAYERS: 45, MAX_VIEWPORT_EQUIVALENTS: 26 }
+    const LAYER_BUDGET_ROUTES = ['/', '/portfolio/dell-design-system']
+
+    type CensusLayer = { drawsContent: boolean; width: number; height: number }
+
+    const layerCensus = async (page: Page) => {
+      const vp = page.viewportSize() ?? { width: 1, height: 1 }
+      const cdp = await page.context().newCDPSession(page)
+      let layers: CensusLayer[] = []
+
+      cdp.on('LayerTree.layerTreeDidChange', (e) => {
+        if (e.layers) layers = e.layers as CensusLayer[]
+      })
+      await cdp.send('LayerTree.enable')
+      await page.mouse.wheel(0, 1)
+      await page.waitForTimeout(1500)
+      await cdp.detach()
+
+      const drawing = layers.filter((l) => l.drawsContent)
+      const px = drawing.reduce(
+        (sum, l) => sum + Math.min(l.width, vp.width * 1.5) * Math.min(l.height, vp.height * 2),
+        0
+      )
+
+      return { drawingLayers: drawing.length, viewportEquivalents: px / (vp.width * vp.height) }
+    }
+
+    for (const route of LAYER_BUDGET_ROUTES) {
+      test(`stays inside the mobile GPU budget on ${route}`, async ({ page }) => {
+        collectErrs(page)
+        await page.goto(route, { waitUntil: 'load' })
+        await page.waitForTimeout(6000)
+        const census = await layerCensus(page)
+
+        test.info().annotations.push({ type: 'layer-census', description: JSON.stringify(census) })
+        expect(
+          census.drawingLayers,
+          'LayerTree delivered no layers — census is blind'
+        ).toBeGreaterThan(0)
+        expect(census.drawingLayers, JSON.stringify(census)).toBeLessThanOrEqual(
+          LAYER_BUDGET.MAX_DRAWING_LAYERS
+        )
+        expect(census.viewportEquivalents, JSON.stringify(census)).toBeLessThanOrEqual(
+          LAYER_BUDGET.MAX_VIEWPORT_EQUIVALENTS
+        )
+      })
+    }
+  })
 })
