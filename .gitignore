@@ -68,3 +68,6 @@ node_modules
 .tmp-*
 test-results/
 playwright-report/
+
+# mythos-agent scanner state — results/cache are regenerated per scan.
+.sphinx/

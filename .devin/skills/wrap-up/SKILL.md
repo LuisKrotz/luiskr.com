@@ -57,6 +57,7 @@ Run every phase below end-to-end. Do not stop early and do not report completion
 18. Jest — `yarn test:coverage`: all suites green, 100% statements/branches/functions/lines per file (governance tests — style-governance, jsdoc-coverage, component-portability, axe-scan, contrast-aaa, seo-* — are the project-rules gate; they must pass too).
 19. a11y — `yarn a11y` (+ `yarn media:a11y` if media changed): zero violations of moderate impact or higher.
 20. Security — `yarn test:security`: zero high/critical; new unfixable dev-only risks need a justified `security-exceptions.json` entry, never blanket suppression.
+    20b. Mythos — `yarn test:mythos` (also runs inside `yarn verify`): zero unexcepted findings at ANY severity — every item is a blocker. New accepted risks need a justified `mythos-exceptions.json` entry (rule + file + line + review date); generated/vendor paths are filtered by the gate, never by hand-editing scanner output.
 21. Performance — `yarn test:fps` plus `chunk-budget` (runs inside build): within budget.
 22. Lighthouse — `yarn lighthouse` (= `yarn build --verify-lighthouse`): all categories at their asserted thresholds.
 23. Build + preview — `yarn build` exits with zero errors/warnings; `yarn preview` serves clean (no console errors/warnings). Kill the preview server when done.

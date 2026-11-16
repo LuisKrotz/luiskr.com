@@ -1,0 +1,256 @@
+{
+  "exceptions": [
+    {
+      "rule": "xss-unescaped",
+      "file": "core/jsx.ts",
+      "line": 50,
+      "justification": "Comment documenting that the dangerouslySetInnerHTML prop path is sanitized — not an executable sink.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "xss-unescaped",
+      "file": "core/jsx.ts",
+      "line": 118,
+      "justification": "The JSX runtime's own sink — innerHTML is assigned only after sanitizeHtml() (tag+attr allowlist) runs on the value.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "xss-unescaped",
+      "file": "core/Component.ts",
+      "line": 648,
+      "justification": "Base-class render() output sink. All production components return JSX Nodes (project rule: JSX only, no HTML string interpolation); the string branch carries first-party markup, never user input.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "xss-unescaped",
+      "file": "core/locale/reader-content.ts",
+      "line": 46,
+      "justification": "Copies innerHTML between two elements of the same already-parsed document (h1→h2 promotion) — no new untrusted input enters the DOM.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "xss-unescaped",
+      "file": "core/locale/reader-content.ts",
+      "line": 132,
+      "justification": "Parked-article swap assigns fetched CMS markup. Content is first-party Firebase/locale data behind admin-only write access — the same trust boundary every other CMS HTML surface uses; sanitizing would strip legitimate article markup (img/media) and break rendering.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "xss-unescaped",
+      "file": "shared/src/globals.d.ts",
+      "line": 18,
+      "justification": "TypeScript type declaration for the dangerouslySetInnerHTML prop shape — no executable code.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "xss-unescaped",
+      "file": "core/utils/data/sanitize.ts",
+      "line": 12,
+      "justification": "Doc comment inside the sanitizer itself showing usage — not a sink.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "xss-unescaped",
+      "file": "core/tokens/jsx/props.ts",
+      "line": 73,
+      "justification": "Token constant holding the prop-name string 'dangerouslySetInnerHTML' — data, not a sink.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "xss-unescaped",
+      "file": "shared/scripts/build/browser-loader.js",
+      "line": 316,
+      "justification": "Static fallback markup string with zero interpolation — build-time browser loader, no user input.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "xss-unescaped",
+      "file": "website/views/legal/Legal.tsx",
+      "line": 160,
+      "justification": "Comment noting CMS HTML paragraphs go through dangerouslySetInnerHTML — documentation, not a sink.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "xss-unescaped",
+      "file": "website/views/legal/Legal.tsx",
+      "line": 258,
+      "justification": "dangerouslySetInnerHTML prop — value is sanitized by the JSX runtime (sanitizeHtml allowlist) before reaching innerHTML.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "xss-unescaped",
+      "file": "website/components/legal/Footer.tsx",
+      "line": 226,
+      "justification": "dangerouslySetInnerHTML prop — sanitized by the JSX runtime before reaching innerHTML.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "xss-unescaped",
+      "file": "website/components/feedback/CookieBanner.tsx",
+      "line": 238,
+      "justification": "dangerouslySetInnerHTML prop — sanitized by the JSX runtime before reaching innerHTML.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "xss-unescaped",
+      "file": "rust/diagram/src/lib.rs",
+      "line": 19,
+      "justification": "Rust doc comment describing mermaid.render() parity — not executable code.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "xss-unescaped",
+      "file": "website/components/portfolio/related/render.tsx",
+      "line": 278,
+      "justification": "dangerouslySetInnerHTML prop — sanitized by the JSX runtime before reaching innerHTML.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "xss-unescaped",
+      "file": "website/components/media/draw-text/dom.ts",
+      "line": 104,
+      "justification": "Defended sink: renderContent's tokenizer allowlists phrasing tags only (HTML_PHRASING_TAGS — no scriptable/embedded elements), escapes all text via escapeHtml, and strips on*= handlers plus javascript:/vbscript:/non-image data: URL schemes from attributes via sanitizeAttrString.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "xss-unescaped",
+      "file": "website/components/carousel/mentions-deck/render.tsx",
+      "line": 94,
+      "justification": "dangerouslySetInnerHTML prop — sanitized by the JSX runtime before reaching innerHTML.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "xss-unescaped",
+      "file": "website/components/carousel/awards-carousel/render.tsx",
+      "line": 59,
+      "justification": "dangerouslySetInnerHTML prop — sanitized by the JSX runtime before reaching innerHTML.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "eval-usage",
+      "file": "shared/src/main.ts",
+      "line": 105,
+      "justification": "Comment containing the word 'eval (' — documentation, not a call.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "eval-usage",
+      "file": "shared/build/es-targets.mjs",
+      "line": 17,
+      "justification": "Comment describing the feature-detection probes — the actual new Function calls evaluate static literal snippets, never user input.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "eval-usage",
+      "file": "shared/scripts/build/browser-loader.js",
+      "line": 31,
+      "justification": "new Function evaluates a static feature-detection literal ('return (code)') at build/boot time — no user-controlled input reaches it.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "eval-usage",
+      "file": "shared/scripts/build/browser-loader.js",
+      "line": 48,
+      "justification": "new Function('return import(\"x\")') — static syntax probe for dynamic-import support, no user input.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "next-unsafe-redirect",
+      "file": "shared/scripts/serve/preview-h2.mjs",
+      "line": 232,
+      "justification": "Local dev preview server only — issues a 301 that appends a trailing slash to the same request path. No scheme/host is taken from input; not shipped to production.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "secret:password-in-url",
+      "file": "core/locale/cyrillic-font.ts",
+      "line": 25,
+      "justification": "Public Google Fonts css2 stylesheet URL (Fira Sans weights) — contains no credentials; the pattern matched URL parameters, not a password.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "crypto:crypto-hardcoded-key",
+      "file": "core/tokens/indexnow.ts",
+      "line": 16,
+      "justification": "IndexNow API key is a public domain-verification token by protocol design — it must be served at /{key}.txt so search engines can verify ownership. It grants no access to any system; it only authorizes URL-submission pings for this domain.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "crypto:crypto-hardcoded-iv",
+      "file": "shared/scripts/i18n/patch-animation-descriptions.js",
+      "line": 2711,
+      "justification": "i18n string-table entry (Portuguese 'riv:' key holding 'Referência de Animações') — translation data, not crypto material; pattern matched the 'iv' substring.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "crypto:crypto-hardcoded-iv",
+      "file": "shared/scripts/i18n/patch-animation-descriptions.js",
+      "line": 2818,
+      "justification": "i18n string-table entry ('animacoes' key) — translation data, not crypto material; pattern matched the 'iv' substring.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "crypto:crypto-weak-random",
+      "file": "website/components/home/about/glitch/fx.ts",
+      "line": 230,
+      "justification": "Math.random drives a decorative glitch-hover visual effect — no security context (not tokens, keys, or unguessable identifiers).",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "crypto:crypto-weak-random",
+      "file": "website/components/home/about/glitch/fx.ts",
+      "line": 356,
+      "justification": "Math.random hit-test for the same decorative glitch effect — no security context.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "redos:vulnerable-pattern",
+      "file": "website/components/media/draw-text/render.ts",
+      "line": 108,
+      "justification": "Tokenizer regex runs only over trusted first-party CMS/locale copy (authored content, never end-user input). Pathological backtracking input cannot reach it; rewriting the tokenizer risks render regressions for zero reachable risk.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "dep:GHSA-gcqx-w48m-w2h4",
+      "file": "yarn.lock",
+      "line": 0,
+      "justification": "deepmerge@4.3.1 — no patched release exists (latest is 4.3.1). Dev-only tooling (jest-config, workbox-build via @rollup/plugin-node-resolve) merging static config objects at build/test time; never ships to production and never processes untrusted input. Mirrors security-exceptions.json.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "xss-unescaped",
+      "file": "experiments/docs/mermaid.ts",
+      "line": 178,
+      "justification": "renderDiagram output is SVG produced by our own Rust/WASM diagram crate — every label/text node passes through esc() (XML-escapes &<>\"'), there is no foreignObject/htmlLabel path, and the mermaid source is first-party authored docs markdown.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "xss-unescaped",
+      "file": "experiments/docs/mermaid.ts",
+      "line": 237,
+      "justification": "Same defended sink as :178 — own WASM renderer with escaped text output over first-party diagram source.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "xss-unescaped",
+      "file": "experiments/docs/Docs.tsx",
+      "line": 781,
+      "justification": "payload.html is build-time generated markup from repo files (rendered markdown, JSON trees, pre-sanitized HTML reports) served same-origin — first-party content; the report pipeline's own sanitizer strips helper scripts, and the JSX sanitizer is bypassed intentionally to preserve <pre>/<table>/<style>.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "privacy:privacy-no-consent",
+      "file": "experiments/docs/telemetry.ts",
+      "line": 89,
+      "justification": "gtag('event') only executes when window.gtag exists — the real gtag.js + Clarity tags are injected by initAnalytics() exclusively after cookie consent (scheduleAnalytics trigger). Pre-consent the dataLayer shim queues locally and is never flushed; declining consent means the tags never load.",
+      "review": "2027-05-09"
+    },
+    {
+      "rule": "dep:GHSA-g3hv-75wg-m249",
+      "file": "yarn.lock",
+      "line": 0,
+      "justification": "minimatch@10.2.5 is pinned for typedoc@0.28.20 (latest upstream) which declares minimatch@^10.2.5 — v11 is API-incompatible and no 10.x patch exists (fixed: 11.0.1). Dev-only docs-generation dependency; the DoS vector needs attacker-controlled glob patterns and typedoc only globs this repo's own source at docs-build time. Never ships to production.",
+      "review": "2027-05-09"
+    }
+  ]
+}

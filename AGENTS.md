@@ -88,6 +88,7 @@ Under NO circumstances may any hardcoded values be introduced into any file in t
 
 13. **Security Scans Gate the Build**:
     - `shared/scripts/verify/security-scan.mjs` runs `snyk test` when `SNYK_TOKEN` is set, falling back to `yarn audit` (same advisory data). High/critical vulnerabilities fail the gate; unfixable dev-only risks live in `security-exceptions.json` with justification + review date — never blanket-suppress.
+    - `shared/scripts/verify/mythos-scan.mjs` (`yarn test:mythos`, also a `yarn verify` step) runs mythos-agent pattern + deterministic scanners. EVERY unexcepted finding fails — all severities are blockers. The gate path-filters generated/vendor artifacts (release/, dist/, reports/, wasm pkg glue, public/ort, tests), refines two over-matching builtin rules (weak-crypto → real `createHash` weak algos only; timing-attack → secret-identifier comparisons only), scopes off inapplicable scanners (race/session/biz-logic — no surface on this architecture), and honors `mythos-exceptions.json` (rule + file + line + justification + review date). Report → `experiments/docs/reports/mythos-report.json`.
     - `shared/tests/governance/axe-scan.test.js` runs axe-core (WCAG A/AA/AAA rule tags) on real mounted surfaces — violations of moderate impact or higher fail the suite; `shared/tests/governance/contrast-aaa.test.js` enforces computed WCAG AAA contrast ratios on the compiled token sheet (7:1 text / 3:1 UI) since happy-dom cannot measure paint contrast.
 
 14. **Verification Pipeline (commit → push → build)**:

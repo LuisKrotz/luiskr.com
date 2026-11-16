@@ -1,0 +1,60 @@
+# mythos-agent configuration — luiskr.com-V3
+# AI code-review security gate. Pattern scanners run offline (no API key
+# required); AI stages (hunt/ask/fix) need a provider key in the env.
+#
+# Scan scope is deliberately narrowed to first-party source: build output
+# (dist/, release/, target/), vendored patches (shared/local-modules/), the
+# CMS data dump (database.json) and test trees are excluded — findings there
+# are either generated artifacts or non-shipped code.
+
+model: claude-sonnet-4-20250514
+provider: anthropic
+
+scan:
+  include:
+    - 'core/**/*.{ts,tsx,js,jsx,mjs,cjs}'
+    - 'website/**/*.{ts,tsx,js,jsx,mjs,cjs}'
+    - 'cms/**/*.{ts,tsx,js,jsx,mjs,cjs}'
+    - 'shared/**/*.{ts,tsx,js,jsx,mjs,cjs}'
+    - 'experiments/**/*.{ts,tsx,js,jsx,mjs,cjs}'
+    - 'desktop/**/*.{ts,tsx,js,jsx,mjs,cjs}'
+    - 'rust/**/*.rs'
+    - '*.config.{js,mjs,cjs,ts}'
+    - 'firebase.json'
+    - 'index.html'
+    - '.github/workflows/*.{yml,yaml}'
+  exclude:
+    - 'node_modules/**'
+    - 'dist/**'
+    - 'release/**'
+    - 'build/**'
+    - 'coverage/**'
+    - '.git/**'
+    - '.mythos/**'
+    - '.sphinx/**'
+    - '.lighthouseci/**'
+    - 'test-results/**'
+    - 'playwright-report/**'
+    - '**/target/**'
+    - '**/out/**'
+    - '**/tmp/**'
+    - 'database.json'
+    - 'yarn.lock'
+    - 'package-lock.json'
+    - 'shared/local-modules/**'
+    - '**/*.min.js'
+    - '**/*.test.*'
+    - '**/*.test-*'
+    - '**/*.spec.*'
+    - '**/__mocks__/**'
+    - '**/__fixtures__/**'
+    - '**/tests/**'
+    - '**/fixtures/**'
+    # Generated coverage/a11y report trees (gitignored) and shipped
+    # build artifacts (wasm-bindgen glue, vendored onnxruntime-web) —
+    # the deterministic scanners carry their own ignore lists, so the
+    # gate script re-applies this boundary in shared/scripts/verify/
+    # mythos-scan.mjs for every scanner.
+    - '**/reports/**'
+    - 'website/public/wasm/**'
+    - 'website/public/ort/**'

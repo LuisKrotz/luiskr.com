@@ -1,0 +1,34 @@
+# mythos-agent policy — luiskr.com-V3
+# Evaluated by `mythos-agent ci` during the wrap-up security gate.
+# Mirrors the project's security-scan posture: critical findings and
+# hardcoded secrets block; high findings warn for human review.
+
+name: luiskr-security
+version: 1
+description: >-
+  Wrap-up gate policy — no critical vulnerabilities, no committed
+  secrets, high-severity findings require review before release.
+
+rules:
+  - id: no-critical
+    description: 'No critical vulnerabilities allowed'
+    action: block
+    condition:
+      type: severity_threshold
+      severity: critical
+    compliance: [OWASP, SOC2]
+
+  - id: no-secrets
+    description: 'No hardcoded secrets in source code'
+    action: block
+    condition:
+      type: category_match
+      categories: [secrets]
+    compliance: [SOC2]
+
+  - id: warn-high
+    description: 'High severity vulnerabilities should be reviewed'
+    action: warn
+    condition:
+      type: severity_threshold
+      severity: high

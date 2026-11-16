@@ -40,3 +40,10 @@ website/public/wasm/
 .tmp-*
 test-results/
 playwright-report/
+
+# Local scanner/tool state — regenerated artifacts, never authored source.
+.mythos/
+.mythos.yml
+.sphinx/
+.sphinxignore
+mythos-filter.cjs
