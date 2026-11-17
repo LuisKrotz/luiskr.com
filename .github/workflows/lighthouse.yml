@@ -11,7 +11,12 @@ jobs:
     name: Lighthouse audit
     runs-on: ubuntu-latest
     steps:
+      # resolutions pin braces/extract-zip/sprintf-js to
+      # file:shared/local-modules/* — shared/ is a submodule, so yarn
+      # install fails without a recursive checkout.
       - uses: actions/checkout@v4
+        with:
+          submodules: recursive
 
       - uses: actions/setup-node@v4
         with:
