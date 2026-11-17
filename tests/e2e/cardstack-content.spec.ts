@@ -181,6 +181,21 @@ test.describe('Card-stack mobile content contract', () => {
         })
       )
 
+    // The baseline must be the laid-out pile, not a frame sampled before
+    // layout catches up: cards are absolutely positioned and JS-sized, so
+    // a pre-pose frame reports 0×0 boxes — a transient state, not a
+    // settled reference. Under parallel CPU starvation that frame can
+    // land between the class lift and the first layout pass; anchoring
+    // on it manufactures a fake drift. Wait until every card owns a real
+    // box — a genuinely broken deck (never posed) still fails here on
+    // timeout instead of slipping through as a drift diff.
+    await expect
+      .poll(async () => (await rects()).every(([, , w, h]) => w > 0 && h > 0), {
+        timeout: 10000,
+        message: 'all cards laid out (non-zero rects) post-reveal',
+      })
+      .toBe(true)
+
     const first = await rects()
 
     await page.waitForTimeout(150)

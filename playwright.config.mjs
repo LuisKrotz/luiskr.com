@@ -23,12 +23,16 @@ export default defineConfig({
     ...Object.entries(WEBKIT_DEVICES).map(([name, use]) => ({
       name,
       use,
-      testMatch: ['ios-webkit.spec.ts', 'cardstack-content.spec.ts'],
+      testMatch: ['ios-webkit.spec.ts', 'cardstack-content.spec.ts', 'cardstack-parity.spec.ts'],
     })),
     ...Object.entries(CHROMIUM_DEVICES).map(([name, use]) => ({
       name,
       use,
-      testMatch: ['android-chromium.spec.ts', 'cardstack-content.spec.ts'],
+      testMatch: [
+        'android-chromium.spec.ts',
+        'cardstack-content.spec.ts',
+        'cardstack-parity.spec.ts',
+      ],
     })),
   ],
 })
