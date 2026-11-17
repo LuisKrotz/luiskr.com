@@ -107,15 +107,17 @@ test.describe('Card-stack mobile content contract', () => {
     await gotoDeck(page)
 
     // On stacked tiers the front card's info column must be painted — the
-    // reported bug was the whole pile showing media with zero copy.
+    // reported bug was the whole pile showing media with zero copy. The
+    // in-card writer enters through a light fade (draw animations are
+    // desktop-only), so visibility is polled rather than sampled once.
     const assertFrontCopy = async (step: string) => {
       const front = page.locator(CARD_ACTIVE).first()
 
       await expect(front, `${step}: an active card exists`).toHaveCount(1)
+      await expect(front.locator(CARD_INFO), `${step}: front info column painted`).toBeVisible()
 
       const copy = await cardCopy(front)
 
-      expect(copy.infoVisible, `${step}: front info column painted`).toBe(true)
       expect(copy.title, `${step}: front title`).not.toBe('')
       expect(copy.desc, `${step}: front description`).not.toBe('')
     }
