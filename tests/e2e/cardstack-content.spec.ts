@@ -137,6 +137,59 @@ test.describe('Card-stack mobile content contract', () => {
     await assertFrontCopy('after prev')
   })
 
+  test('mount reveals already-posed cards — no unposed flight ever paints', async ({ page }) => {
+    collectErrs(page)
+    await gotoDeck(page)
+
+    const deck = page.locator(DECK)
+
+    // The mount flicker signature: cards painted transform:none at the
+    // deck centre, then the 0.52s transition flew them to their poses —
+    // twice, once per mid-load re-render. The deck now stays --pending
+    // (invisible) until the first measured pose pass has landed, so the
+    // first visible frame must already be the settled pile.
+    await expect(deck, 'deck lifts --pending after the first pose settle').not.toHaveClass(
+      /card-stack-deck--pending/,
+      { timeout: 15000 }
+    )
+
+    // Post-reveal every card's computed transform must already be a real
+    // pose — never identity (the none→pose flight's first frame).
+    const unposed = await page.locator(CARD).evaluateAll(
+      (els) =>
+        els.filter((el) => {
+          const cs = getComputedStyle(el)
+
+          return (
+            cs.visibility === 'visible' &&
+            (cs.transform === 'none' || cs.transform === 'matrix(1, 0, 0, 1, 0, 0)')
+          )
+        }).length
+    )
+
+    expect(unposed, 'visible cards mid-flight at reveal').toBe(0)
+
+    // And the settled pile must not move — identical geometry across a
+    // settle window means nothing re-poses in view (autoplay's 10s tick
+    // can't reach this window).
+    const rects = () =>
+      page.locator(CARD).evaluateAll((els) =>
+        els.map((el) => {
+          const r = el.getBoundingClientRect()
+
+          return [r.x, r.y, r.width, r.height]
+        })
+      )
+
+    const first = await rects()
+
+    await page.waitForTimeout(150)
+
+    const second = await rects()
+
+    expect(second, 'card geometry drifted after reveal').toEqual(first)
+  })
+
   test('no ResizeObserver loop errors during rapid navigation', async ({ page }) => {
     const errs = collectErrs(page)
 
