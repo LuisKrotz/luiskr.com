@@ -28,12 +28,18 @@ const CARD = '.card-stack-card'
 const DECK = '.card-stack-deck'
 const PENDING = 'card-stack-deck--pending'
 const SECTION = 'card-stack'
+const CARD_STACK_TAG = 'card-stack'
+const TIMER_P = '--card-stack-timer-p'
 
 /** Non-deck view selectors — mirror the widget/media class tokens. */
 const CUSTOM_CAROUSEL = 'custom-carousel'
+const CAROUSEL_SHELL = '.carousel'
+const CAROUSEL_IN_VIEW = 'carousel--in-view'
 const MEDIA_FIGURE = 'media-figure'
 const HIGH_LAYER = 'img.render-media--high'
 const MEDIA_MOSAIC = 'media-mosaic'
+const RELATED_MEDIA = '.related-list-media'
+const RELATED_HIGH = 'related-list-img--high'
 
 /** Dev server origin — the comparison baseline against the preview build. */
 const DEV_URL = process.env.DEV_URL || 'http://localhost:5199'
@@ -82,6 +88,32 @@ const FREEZE_JS = `
       })
     })
 
+    // Related-card ladder convergence — coverLadderStep mounts each
+    // confirmed rung as a BARE successor img beside the ladder <picture>
+    // and removes the picture on the successor's own load, but a
+    // post-climb _updateDom re-wraps the registry's reached rung in a
+    // fresh picture instead. Which shape a card ends in depends on
+    // store-update ordering — a genuine delivery-mode divergence, not
+    // paint. The canonical terminal form is the thumb <picture> beside
+    // exactly one bare --high img: unwrap any picture whose img carries
+    // --high, then drop every bare high img but the last (the newest
+    // confirmed rung — same painted box and bitmap either way).
+    globalThis.__lkDeepAll(root, '${RELATED_MEDIA}').forEach((media) => {
+      media.querySelectorAll('picture').forEach((p) => {
+        const img = p.querySelector('img')
+
+        if (img && img.className.includes('${RELATED_HIGH}')) p.replaceWith(img)
+      })
+
+      const highs = Array.from(media.children).filter(
+        (k) => k.tagName === 'IMG' && k.className.includes('${RELATED_HIGH}')
+      )
+
+      highs.forEach((el, i) => {
+        if (i < highs.length - 1) el.remove()
+      })
+    })
+
     // Mosaic repack drain — the host ResizeObserver coalesces repacks
     // into one rAF via scheduleLayout; a queued pass can land between the
     // geometry sample and the capture and shift every tile. Cancelling
@@ -95,6 +127,113 @@ const FREEZE_JS = `
 
       m.relayout?.()
     })
+
+    // WebGPU-widget placeholder convergence — mountCornerBrackets /
+    // mountDividerSheen / mountRingSheen / mountRingFill append an
+    // is-fallback canvas synchronously, then defer mountWebGpuWidget
+    // behind an IntersectionObserver entry. With the widget layer off
+    // (no ?debug=webgpuWidgets:active) the mount always resolves null
+    // and the helper removes its canvas — but only AFTER the IO entry
+    // delivers, a delivery that can outlive every quiescence window
+    // (the button sat inside a cv:auto-skipped subtree during its
+    // viewport transit, or frame production stalled under load). Which
+    // placeholders still stand at capture is IO-delivery timing noise,
+    // not paint — the canvas is an empty transparent stub either way
+    // (the :has(> canvas:not(.is-fallback)) gate leaves the CSS
+    // brackets/rings authoritative). Terminal contract: a mountable
+    // placeholder has already failed — drop every is-fallback canvas
+    // still at its unsized placeholder state (default 300x150 backing,
+    // no inline dims; every real widget init — WebGL or 2D fallback —
+    // sizes its canvas's backing + inline box on mount).
+    globalThis.__lkDeepAll(root, 'canvas.is-fallback').forEach((cv) => {
+      if (cv.width === 300 && cv.height === 150 && !cv.style.width && !cv.style.height) {
+        cv.remove()
+      }
+    })
+
+    // In-view reveal convergence — .carousel paints translateY(space-xl)
+    // + opacity:0 until the IntersectionObserver adds --in-view, and the
+    // class only lands when an applyVisibility run finds the strip
+    // intersecting. During the sweeps every IO apply defers to
+    // scroll-stop, so which strips carry the class at capture is
+    // debounce-vs-delivery ordering — one env can hold the offset while
+    // the other released it (a ±space-xl whole-strip shift). The settle
+    // did bring every host through the viewport, so the terminal
+    // contract is "entered": pin the class + flag on each carousel — the
+    // in-view rule sets transition:none so the release applies
+    // instantly, and the WebGL arrows converge destroyed either way (no
+    // strip is in view under the canonical top scroll).
+    // Observer quiesce — the capture itself scrolls the page (tile
+    // passes), and every crossing re-arms applyVisibility: arrow
+    // mount/destroy churn, index re-jumps, smooth track scrolls and
+    // autoplay flips — all landing BETWEEN freeze and screenshot. The
+    // class+flag pin above already writes the terminal reveal state, so
+    // disconnecting the IO after it is the application's own end state:
+    // no deferred apply can move a slide during capture.
+    globalThis.__lkDeepAll(root, '${CUSTOM_CAROUSEL}').forEach((cc) => {
+      cc.observer?.disconnect()
+
+      // Side-effect stubs — a scroll-settle apply queued before the
+      // disconnect still fires applyVisibility afterwards, and track
+      // scroll listeners debounce into _checkInfiniteLoop; either can
+      // write scrollLeft (index jump, clone teleport, spring start) or
+      // mount/destroy the arrow canvases between freeze and capture.
+      // Parking is already canonical (goTo(0) ran during settle), so
+      // every remaining writer is a no-op by contract.
+      cc._stopAutoplay?.(true)
+      cc._jumpToSlide = () => {}
+      cc._checkInfiniteLoop = () => {}
+      cc._mountWebGLArrows = () => {}
+      cc._destroyWebGLArrows = () => {}
+      cc._startAutoplay = () => {}
+      cc._stopAutoplay = () => {}
+
+      cc.isEnteredViewport = true
+      cc.shadowRoot?.querySelector('${CAROUSEL_SHELL}')?.classList.add('${CAROUSEL_IN_VIEW}')
+    })
+    // Animation neuter via adopted stylesheet — governs the document plus
+    // every shadow root under the view (recursive: carousel/mosaic roots
+    // carry their own animated surfaces). An inline animation-play-state
+    // dies with its node: a late re-render REPLACES the title-marquee
+    // strip (c._titleRepeat feeds the template), and the fresh element's
+    // CSS animation starts RUNNING — drifting ~90px/s through any
+    // freeze→capture gap. A root-level sheet instead pins every element
+    // that root ever produces — existing, recreated, or late-mounted — to
+    // its natural end state, so re-arms and re-renders can never resume
+    // motion. Flagged per root so repeat freezes don't re-append.
+    const neuter = (r) => {
+      r.querySelectorAll('*').forEach((el) => {
+        if (el.shadowRoot) neuter(el.shadowRoot)
+      })
+
+      if (r.__lkNeutered) return
+      r.__lkNeutered = true
+
+      try {
+        const sheet = new CSSStyleSheet()
+
+        sheet.replaceSync(
+          '*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}'
+        )
+
+        r.adoptedStyleSheets = [...r.adoptedStyleSheets, sheet]
+      } catch {
+        const st = document.createElement('style')
+
+        st.textContent =
+          '*,*::before,*::after{animation:none!important;transition:none!important;scroll-behavior:auto!important}'
+
+        r.appendChild(st)
+      }
+    }
+
+    neuter(document)
+
+    if (root instanceof ShadowRoot || root instanceof Document) neuter(root)
+    else if (root && root.getRootNode) neuter(root.getRootNode())
+
+    // WAAPI surface — element.animate() effects outlive the CSS sheet;
+    // pin them the same way (infinite at phase 0, finite at their end).
     anims.forEach((a) => {
       try {
         if (a.effect && a.effect.getTiming && a.effect.getTiming().iterations === Infinity) {
@@ -129,6 +268,37 @@ interface DeckSnapshot {
 }
 
 /**
+ * Stillness screenshot equality — Chromium's PNG encoder emits
+ * nondeterministic byte streams on some platforms (identical pixels,
+ * different chunk layout/lengths), and the rasterizer shifts ±1-2/255
+ * dither phases at tile clip edges, so raw byte equality can never
+ * converge for the stillness checks. Three passes: exact byte equality
+ * (fast path), exact decoded-pixel equality, then the parity threshold
+ * (pixelmatch 0.05 — real churn always produces above-threshold diffs
+ * while sub-threshold raster noise reads as still).
+ * @param a First PNG bytes.
+ * @param b Second PNG bytes.
+ * @returns True when both decode to the same dimensions and no
+ *   above-threshold pixel differs.
+ */
+const shotsEqual = (a: Buffer, b: Buffer): boolean => {
+  if (a.equals(b)) return true
+
+  const pa = PNG.sync.read(a)
+  const pb = PNG.sync.read(b)
+
+  if (pa.width !== pb.width || pa.height !== pb.height) return false
+  if (pa.data.equals(pb.data)) return true
+
+  return (
+    pixelmatch(pa.data, pb.data, null, pa.width, pa.height, {
+      threshold: 0.05,
+      includeAA: false,
+    }) === 0
+  )
+}
+
+/**
  * Waits for the deck's settled end state: at least one card mounted, the
  * --pending gate lifted, webfonts resolved, every card image decoded, and
  * zero running CSS/JS animations — then a self-stability check (two geometry
@@ -138,6 +308,50 @@ interface DeckSnapshot {
  */
 const settle = async (page: Page): Promise<void> => {
   await page.locator(CARD).first().waitFor({ state: 'attached', timeout: 30000 })
+
+  // Autoplay disarm — mirrors the carousel _autoplayPermanentlyStopped
+  // latch in settleView. The desktop fan tier arms a 10s countdown on
+  // mount that repaints a conic border light every rAF and goTo()s the
+  // pile on expiry: the ring alone keeps the stillness loop from ever
+  // converging, and a tick mid-capture can advance the front card so
+  // dev/prod park on different indices. _autoOn=false parks every
+  // writer at its mount state; _autoArmed=true blocks the one-shot arm
+  // in onUpdated if this eval beats the items render; the IO
+  // disconnect stops off-screen hold/resume flips. applyAutoChrome
+  // re-reads _autoOn on the next render and clears the ring — the
+  // application's own manual-deck end state, identical on both envs.
+  await page.evaluate(
+    (arg) => {
+      eval(arg.js)
+
+      const host = globalThis.__lkDeepOne(document, arg.tag) as any
+
+      if (!host) return
+
+      host._autoArmed = true
+      host._autoOn = false
+      host._autoPaused = false
+      host._autoHeld = false
+      host._autoBank = 0
+
+      if (host._autoTimer) {
+        clearTimeout(host._autoTimer)
+
+        host._autoTimer = null
+      }
+
+      if (host._autoRaf) {
+        cancelAnimationFrame(host._autoRaf)
+
+        host._autoRaf = 0
+      }
+
+      host._autoIO?.disconnect()
+      host.style?.removeProperty(arg.prop)
+    },
+    { tag: CARD_STACK_TAG, prop: TIMER_P, js: DEEP_JS }
+  )
+
   await expect(page.locator(DECK), 'deck lifts --pending').not.toHaveClass(new RegExp(PENDING), {
     timeout: 30000,
   })
@@ -218,7 +432,7 @@ const settle = async (page: Page): Promise<void> => {
 
     const s2 = await page.locator(DECK).screenshot()
 
-    pixelStable = s1.equals(s2)
+    pixelStable = shotsEqual(s1, s2)
     s1 = s2
   }
 
@@ -287,13 +501,33 @@ const capture = async (
 
 /**
  * Non-deck routes under the same parity contract — mirrors ROUTE_PATHS and
- * the VIEW_TAGS the router mounts: one project-internals page (coza — a real
- * EN slug carrying carousels + long copy) and one legal page (privacy-policy,
- * the densest legal doc). Region screenshots mask canvas/video surfaces so
- * ambient engine paint can't rephase between the two captures.
+ * the VIEW_TAGS the router mounts: the project's heaviest internals pages
+ * (carousels, mosaics, long copy — each named by slug so diff artifacts stay
+ * attributable) plus the densest legal doc. Region screenshots mask
+ * canvas/video surfaces so ambient engine paint can't rephase between the
+ * two captures.
  */
 const ROUTES = [
-  { name: 'project-internals', path: '/portfolio/coza/', view: 'view-project' },
+  { name: 'project-coza', path: '/portfolio/coza/', view: 'view-project' },
+  { name: 'project-metcha', path: '/portfolio/metcha/', view: 'view-project' },
+  {
+    name: 'project-brazilian-leather',
+    path: '/portfolio/brazilian-leather/',
+    view: 'view-project',
+  },
+  {
+    name: 'project-dell-design-system',
+    path: '/portfolio/dell-design-system/',
+    view: 'view-project',
+  },
+  { name: 'project-melissa', path: '/portfolio/melissa/', view: 'view-project' },
+  {
+    name: 'project-minimelissa',
+    path: '/portfolio/minimelissa/',
+    view: 'view-project',
+  },
+  { name: 'project-mor', path: '/portfolio/mor/', view: 'view-project' },
+  { name: 'project-cecerele', path: '/portfolio/cecerele/', view: 'view-project' },
   { name: 'legal', path: '/privacy-policy/', view: 'view-legal' },
 ] as const
 
@@ -356,6 +590,20 @@ const settleView = async (page: Page, viewSel: string): Promise<void> => {
       if (view && !w.__lkMutArmed) {
         w.__lkMutArmed = true
         w.__lkMutLast = Date.now()
+
+        // Resource-timing drain pool — the ladder-terminal wait below
+        // counts resource entries to catch silent async work (probe
+        // Images, late fetches) between DOM mutations. The default
+        // buffer caps at 250 entries, which a media-dense page overflows
+        // mid-settle and freezes the count; enlarge it and start clean
+        // so only settle-phase traffic is tracked.
+        try {
+          performance.setResourceTimingBufferSize(10000)
+          performance.clearResourceTimings()
+        } catch {
+          // Older engines without the buffer API fall back to the
+          // mutation+img signature — still a superset of the old check.
+        }
 
         // Sweep — latches any carousel that mounted between the up-front
         // latch and this observer arm (the fonts wait can take seconds).
@@ -441,9 +689,12 @@ const settleView = async (page: Page, viewSel: string): Promise<void> => {
 
   // Network-idle — DOM quiescence alone fires mid-flight: a cover-ladder
   // probe in flight produces no mutations until its src swap lands, so a
-  // >500ms fetch gap masquerades as done. networkidle only holds once every
-  // probe/img/font request has drained — the true end of the climb.
-  await page.waitForLoadState('networkidle', { timeout: 60000 })
+  // >500ms fetch gap masquerades as done. Tolerated timeout: on the
+  // media-dense routes dev's module waterfall + ~550 image requests keep
+  // the connection queue nonempty well past 60s under load, so the
+  // img-decode wait below (plus the later quiescence/stillness loops) is
+  // the authoritative drain — a genuinely stuck source still fails there.
+  await page.waitForLoadState('networkidle', { timeout: 60000 }).catch(() => {})
 
   // Every resolved-source img fully decoded — sampled AFTER quiescence so
   // the ladder has stopped swapping src and `complete` reads the terminal
@@ -539,6 +790,42 @@ const settleView = async (page: Page, viewSel: string): Promise<void> => {
     },
     { view: viewSel, js: DEEP_JS },
     { timeout: 30000 }
+  )
+
+  // Second horizontal wake — a slide swept before its media committed
+  // renders at the pre-final intrinsic size and content-visibility:auto
+  // REMEMBERS it (width 0 figures on tablet-landscape tracks): nothing
+  // re-renders a skipped slide until it intersects the track viewport
+  // again. With every img now decoded, a repeat sweep re-renders each
+  // slide at its terminal size, so the remembered size both envs keep is
+  // the real one. Same restore contract as the first sweep.
+  await page.evaluate(
+    async (arg) => {
+      eval(arg.js)
+
+      const view = globalThis.__lkDeepOne(document, arg.view)
+
+      if (!view) return
+
+      for (const cc of globalThis.__lkDeepAll(view.shadowRoot || view, arg.sel)) {
+        cc.scrollIntoView({ block: 'center' })
+
+        const track = (cc as HTMLElement).shadowRoot?.querySelector('.carousel-track')
+
+        if (!track) continue
+
+        const orig = track.scrollLeft
+
+        for (let x = 0; x < track.scrollWidth; x += Math.max(1, track.clientWidth)) {
+          track.scrollLeft = x
+
+          await new Promise((r) => requestAnimationFrame(r))
+        }
+
+        track.scrollLeft = orig
+      }
+    },
+    { view: viewSel, sel: CUSTOM_CAROUSEL, js: DEEP_JS }
   )
 
   // Final-size re-render pass — every content-visibility:auto block lays
@@ -653,6 +940,128 @@ const settleView = async (page: Page, viewSel: string): Promise<void> => {
     { timeout: 60000, polling: 200 }
   )
 
+  // Ladder-terminal drain — the cover ladders (related cards, figure
+  // --high rungs) climb through silent async hops: a detached probe
+  // Image fetch produces no DOM mutations, and its gap can outlive the
+  // 1000ms quiet window, so either env can capture a mid-chain frame
+  // (PICTURE still wrapped vs the bare successor img that replaces it).
+  // The chain can only be advancing while (a) resources keep landing,
+  // (b) the DOM mutates, or (c) an img's decode/src state changes — so
+  // require all three signatures to sit unchanged for a full 1.5s
+  // polling window. Late async mounts (e.g. a GPU-probe canvas) reset
+  // through the same mutation stamp, covering those races too.
+  await page.evaluate(
+    (arg) => {
+      eval(arg.js)
+
+      const w = window as unknown as {
+        __lkLadderPrev?: string
+        __lkLadderStill?: number
+      }
+
+      w.__lkLadderPrev = ''
+      w.__lkLadderStill = 0
+    },
+    { js: DEEP_JS }
+  )
+
+  await page.waitForFunction(
+    (arg) => {
+      eval(arg.js)
+
+      const w = window as unknown as {
+        __lkMutLast?: number
+        __lkLadderPrev?: string
+        __lkLadderStill?: number
+      }
+      const view = globalThis.__lkDeepOne(document, arg.view)
+
+      if (!view) return false
+
+      const imgSig = globalThis
+        .__lkDeepAll(view.shadowRoot || view, 'img')
+        .map(
+          (img) =>
+            `${(img as HTMLImageElement).currentSrc || img.getAttribute('src') || ''}=${(img as HTMLImageElement).complete ? 1 : 0}`
+        )
+        .join('|')
+
+      // Videos join the signature too — a <video> resolving its metadata
+      // late publishes intrinsic dimensions that re-size its box (and any
+      // slide/centering math built on it) without a DOM mutation.
+      const vidSig = globalThis
+        .__lkDeepAll(view.shadowRoot || view, 'video')
+        .map(
+          (v) =>
+            `${(v as HTMLVideoElement).currentSrc || v.getAttribute('src') || ''}=${(v as HTMLVideoElement).readyState}`
+        )
+        .join('|')
+
+      const resCount = performance.getEntriesByType('resource').length
+      const key = `${resCount}#${w.__lkMutLast || 0}#${imgSig}#${vidSig}`
+
+      w.__lkLadderStill = key === w.__lkLadderPrev ? (w.__lkLadderStill || 0) + 1 : 0
+      w.__lkLadderPrev = key
+
+      return (w.__lkLadderStill || 0) >= arg.stillPolls
+    },
+    { view: viewSel, stillPolls: 6, js: DEEP_JS },
+    { timeout: 120000, polling: 250 }
+  )
+
+  // Terminal-size sweep — anything that re-sized a slide after the
+  // earlier sweeps (late video metadata, a rung swap landing past the
+  // quiet window, a fit pass firing on the drain's last poll) leaves a
+  // stale content-visibility remembered size behind. With the ladder
+  // drained and every medium committed, one last sweep re-renders each
+  // slide at its true terminal geometry — the remembered size then
+  // holds the same final values on both envs.
+  await page.evaluate(
+    async (arg) => {
+      eval(arg.js)
+
+      const view = globalThis.__lkDeepOne(document, arg.view)
+
+      if (!view) return
+
+      for (const cc of globalThis.__lkDeepAll(view.shadowRoot || view, arg.sel)) {
+        cc.scrollIntoView({ block: 'center' })
+
+        const track = (cc as HTMLElement).shadowRoot?.querySelector('.carousel-track')
+
+        if (!track) continue
+
+        const orig = track.scrollLeft
+
+        for (let x = 0; x < track.scrollWidth; x += Math.max(1, track.clientWidth)) {
+          track.scrollLeft = x
+
+          await new Promise((r) => requestAnimationFrame(r))
+        }
+
+        track.scrollLeft = orig
+      }
+    },
+    { view: viewSel, sel: CUSTOM_CAROUSEL, js: DEEP_JS }
+  )
+
+  // scrollIntoView moved the page — every rect sampled below is
+  // viewport-relative, so restore the canonical top scroll the
+  // geometry map was captured under on both envs.
+  await page.evaluate(() => window.scrollTo(0, 0))
+
+  // The sweep can itself fire deferred writes (fit observers, class
+  // stamps) — a short mutation-quiet window before sampling.
+  await page.waitForFunction(
+    (arg) => {
+      const w = window as unknown as { __lkMutLast?: number }
+
+      return Date.now() - (w.__lkMutLast || 0) > 800
+    },
+    { view: viewSel, js: DEEP_JS },
+    { timeout: 60000, polling: 200 }
+  )
+
   await page
     .waitForFunction(
       (arg) => {
@@ -719,37 +1128,158 @@ const settleView = async (page: Page, viewSel: string): Promise<void> => {
 
   expect(stable, `${viewSel} never reached a stable layout — geometry still churns`).toBe(true)
 
-  const region = page.locator(viewSel)
-  const mask = [page.locator(`${viewSel} canvas`), page.locator(`${viewSel} video`)]
+  const freeze = () =>
+    page.evaluate(
+      (arg) => {
+        eval(arg.js)
+        eval(arg.freeze)
 
-  await page.evaluate(
-    (arg) => {
-      eval(arg.js)
-      eval(arg.freeze)
+        const view = globalThis.__lkDeepOne(document, arg.view)
 
-      const view = globalThis.__lkDeepOne(document, arg.view)
+        if (view) globalThis.__lkFreeze(view.shadowRoot || view)
+      },
+      { view: viewSel, js: DEEP_JS, freeze: FREEZE_JS }
+    )
 
-      if (view) globalThis.__lkFreeze(view.shadowRoot || view)
-    },
-    { view: viewSel, js: DEEP_JS, freeze: FREEZE_JS }
-  )
+  await freeze()
 
-  let s1 = await region.screenshot({ mask })
+  let s1 = await regionShots(page, viewSel)
   let pixelStable = false
+  let prevShots: Buffer[] | null = null
 
   for (let i = 0; i < 40 && !pixelStable; i++) {
     await page.waitForTimeout(400)
 
-    const s2 = await region.screenshot({ mask })
+    // Re-freeze per iteration — a late-triggered writer, a re-armed CSS
+    // animation (marquee duration re-sync), or a freshly mounted surface
+    // can start compositing between captures; pinning at each sample
+    // keeps the compared frames at the same terminal phase.
+    await freeze()
 
-    pixelStable = s1.equals(s2)
+    const s2 = await regionShots(page, viewSel)
+
+    pixelStable = s1.length === s2.length && s1.every((tile, t) => shotsEqual(tile, s2[t]))
+
+    if (!pixelStable) prevShots = s1
     s1 = s2
+  }
+
+  // On exhaustion, dump the last differing tile pair — the moving
+  // region is identifiable at a glance instead of being abstracted to a
+  // count.
+  if (!pixelStable && prevShots) {
+    const dir = test.info().outputPath('still')
+
+    mkdirSync(dir, { recursive: true })
+    prevShots.forEach((tile, t) => writeFileSync(join(dir, `prev-${t}.png`), tile))
+    s1.forEach((tile, t) => writeFileSync(join(dir, `next-${t}.png`), tile))
   }
 
   expect(
     pixelStable,
     `${viewSel} pixels never went still — an overlay/effect is still compositing`
   ).toBe(true)
+}
+
+/**
+ * Device-pixel headroom under the 32767px canvas surface cap — views
+ * taller than ~16k CSS px at 2× DSF exceed it in one shot, so tall
+ * regions capture as viewport-sized tiles instead.
+ */
+const SHOT_TILE_MAX_DEV_PX = 30000
+
+/**
+ * Captures a view region as one or more vertically stacked PNG tiles:
+ * the host is translateY-ed up by (box.y + tile top) per step so each
+ * slice paints at the viewport top with the page scroll parked at 0 —
+ * deterministic across clip semantics (viewport-relative on isMobile,
+ * document-relative on desktop coincide at scrollY=0) and free of every
+ * scroll-induced side effect (IO re-arms, toolbar collapse, cv renders,
+ * short scroll landings). Canvas/video masks apply per tile.
+ * @param page Playwright page on the settled route.
+ * @param viewSel View host selector to clip.
+ * @returns Ordered tile PNGs covering the full view box.
+ */
+const regionShots = async (page: Page, viewSel: string): Promise<Buffer[]> => {
+  const box = await page.evaluate(
+    (arg) => {
+      eval(arg.js)
+
+      const host = globalThis.__lkDeepOne(document, arg.view)!
+      const r = host.getBoundingClientRect()
+
+      return {
+        x: r.x + window.scrollX,
+        y: r.y + window.scrollY,
+        w: r.width,
+        h: r.height,
+        dsf: window.devicePixelRatio,
+      }
+    },
+    { view: viewSel, js: DEEP_JS }
+  )
+
+  const mask = [page.locator(`${viewSel} canvas`), page.locator(`${viewSel} video`)]
+  const vh = await page.evaluate(() => window.innerHeight)
+  const tileCssH = Math.max(1, Math.min(Math.floor(SHOT_TILE_MAX_DEV_PX / box.dsf), vh))
+  const shots: Buffer[] = []
+
+  // Tiles come to the viewport — the host is translated up by
+  // (box.y + top) so each slice paints at document y=0 while the page
+  // scroll stays parked at 0. Page scrolling was the last nondeterminism
+  // in this path: every tile scroll re-fired IntersectionObserver
+  // applies (index jumps, arrow mounts, autoplay flips), collapsed the
+  // emulated mobile toolbar (dvh re-layouts mid-capture), re-rendered
+  // content-visibility blocks, and could land short of its target when
+  // the document floor moved — all inside the compared frame. A static
+  // translate has none of those surfaces: no scroll events, no toolbar,
+  // and viewport-relative (mobile) vs document-relative (desktop) clip
+  // semantics collapse to the same coordinates at scrollY=0.
+  try {
+    for (let top = 0; top < box.h; top += tileCssH) {
+      await page.evaluate(
+        (arg) => {
+          eval(arg.js)
+
+          const host = globalThis.__lkDeepOne(document, arg.view)
+
+          if (host) host.style.transform = `translateY(${-(arg.y + arg.t)}px)`
+        },
+        { y: box.y, t: top, view: viewSel, js: DEEP_JS }
+      )
+
+      // Two frames for content-visibility blocks the translate just
+      // carried into view to render before the shot.
+      await page.evaluate(
+        () => new Promise((r) => requestAnimationFrame(() => requestAnimationFrame(r)))
+      )
+
+      shots.push(
+        await page.screenshot({
+          clip: {
+            x: box.x,
+            y: 0,
+            width: box.w,
+            height: Math.min(tileCssH, box.h - top),
+          },
+          mask,
+        })
+      )
+    }
+  } finally {
+    await page.evaluate(
+      (arg) => {
+        eval(arg.js)
+
+        const host = globalThis.__lkDeepOne(document, arg.view)
+
+        if (host) host.style.transform = ''
+      },
+      { view: viewSel, js: DEEP_JS }
+    )
+  }
+
+  return shots
 }
 
 /**
@@ -767,7 +1297,7 @@ const captureView = async (
   baseURL: string,
   route: (typeof ROUTES)[number],
   contextOpts: Parameters<Browser['newContext']>[0]
-): Promise<{ geom: unknown; shot: Buffer }> => {
+): Promise<{ geom: unknown; shots: Buffer[] }> => {
   const context = await browser.newContext(contextOpts)
   const page = await context.newPage()
 
@@ -822,11 +1352,9 @@ const captureView = async (
       { view: route.view, js: DEEP_JS, freeze: FREEZE_JS }
     )
 
-    const shot = await page.locator(route.view).screenshot({
-      mask: [page.locator(`${route.view} canvas`), page.locator(`${route.view} video`)],
-    })
+    const shots = await regionShots(page, route.view)
 
-    return { geom, shot }
+    return { geom, shots }
   } finally {
     await context.close()
   }
@@ -838,7 +1366,12 @@ test.describe('Dev/prod pixel parity', () => {
 
     try {
       const page = await context.newPage()
-      const res = await page.goto(DEV_URL, { timeout: 10000 }).catch(() => null)
+
+      // Generous probe — the check re-runs on every worker restart (a
+      // test timeout kills the worker), and a dev server busy streaming
+      // ~500 modules for a sibling capture can answer slowly without
+      // being down; a 10s miss would silently skip the whole file.
+      const res = await page.goto(DEV_URL, { timeout: 30000 }).catch(() => null)
 
       test.skip(
         !res || !res.ok(),
@@ -867,6 +1400,17 @@ test.describe('Dev/prod pixel parity', () => {
       hasTouch,
       deviceScaleFactor,
       userAgent,
+      // Reduced-motion context — the deck's autoplay countdown is a
+      // per-frame conic border light + a 10s goTo clock, and the
+      // arm lives behind CardStack's own reduced-motion gate
+      // (STATE_CLASSES.REDUCED_MOTION seeds from this media query at
+      // store init). Per-element disarms can't hold: the host
+      // re-mounts while lazy translations/data stream in, and every
+      // fresh instance re-arms. Emulating the user preference parks
+      // every mount at the manual-deck state — the application's own
+      // contract — identically on both envs. Scoped to the deck
+      // capture; the project routes keep the normal motion tier.
+      reducedMotion: 'reduce' as const,
     }
 
     const prod = await capture(browser, baseURL || 'http://localhost:4173', contextOpts)
@@ -917,27 +1461,31 @@ test.describe('Dev/prod pixel parity', () => {
     ).toBe(true)
   })
 
-  test('dev and prod paint identical internals + legal pages', async ({
-    browser,
-    baseURL,
-    viewport,
-    isMobile,
-    hasTouch,
-    deviceScaleFactor,
-    userAgent,
-    defaultBrowserType,
-  }, testInfo) => {
-    test.setTimeout(240000)
-
-    const contextOpts = {
+  for (const route of ROUTES) {
+    test(`dev and prod paint identical ${route.name}`, async ({
+      browser,
+      baseURL,
       viewport,
       isMobile,
       hasTouch,
       deviceScaleFactor,
       userAgent,
-    }
+      defaultBrowserType,
+    }, testInfo) => {
+      // Per-route budget — media-dense pages (metcha's ~550 imgs) run
+      // the full settle pipeline (two scroll passes, two track sweeps,
+      // three quiescence windows, ladder drain, stability loops) serially
+      // per env, and webkit inflates every eval/screenshot on top.
+      test.setTimeout(360000)
 
-    for (const route of ROUTES) {
+      const contextOpts = {
+        viewport,
+        isMobile,
+        hasTouch,
+        deviceScaleFactor,
+        userAgent,
+      }
+
       const prod = await captureView(
         browser,
         baseURL || 'http://localhost:4173',
@@ -963,36 +1511,57 @@ test.describe('Dev/prod pixel parity', () => {
         `${defaultBrowserType} ${route.name}: view host box dev≠prod`
       ).toEqual((prod.geom as { host: unknown }).host)
 
-      const devImg = PNG.sync.read(dev.shot)
-      const prodImg = PNG.sync.read(prod.shot)
-
+      // Tile count + per-tile dimensions must match — a height mismatch
+      // surfaces here even before geometry diff wording.
       expect(
-        { w: devImg.width, h: devImg.height },
-        `${defaultBrowserType} ${route.name}: screenshot dimensions dev≠prod`
-      ).toEqual({ w: prodImg.width, h: prodImg.height })
+        dev.shots.length,
+        `${defaultBrowserType} ${route.name}: screenshot tile count dev≠prod`
+      ).toBe(prod.shots.length)
 
-      const diff = new PNG({ width: devImg.width, height: devImg.height })
-      const diffPixels = pixelmatch(
-        devImg.data,
-        prodImg.data,
-        diff.data,
-        devImg.width,
-        devImg.height,
-        { threshold: 0.05, includeAA: false }
-      )
-      const diffBudget = Math.ceil(devImg.width * devImg.height * 0.005)
+      let diffPixels = 0
+      let totalPixels = 0
+      const diffs: { dev: Buffer; prod: Buffer; diff: Buffer; tile: number }[] = []
 
-      if (diffPixels > 0) {
+      dev.shots.forEach((devShot, t) => {
+        const prodShot = prod.shots[t]
+        const devImg = PNG.sync.read(devShot)
+        const prodImg = PNG.sync.read(prodShot)
+
+        expect(
+          { w: devImg.width, h: devImg.height },
+          `${defaultBrowserType} ${route.name} tile ${t}: screenshot dimensions dev≠prod`
+        ).toEqual({ w: prodImg.width, h: prodImg.height })
+
+        const diff = new PNG({ width: devImg.width, height: devImg.height })
+        const n = pixelmatch(devImg.data, prodImg.data, diff.data, devImg.width, devImg.height, {
+          threshold: 0.05,
+          includeAA: false,
+        })
+
+        diffPixels += n
+        totalPixels += devImg.width * devImg.height
+
+        if (n > 0) {
+          diffs.push({ dev: devShot, prod: prodShot, diff: PNG.sync.write(diff), tile: t })
+        }
+      })
+
+      const diffBudget = Math.ceil(totalPixels * 0.005)
+
+      if (diffs.length > 0) {
         mkdirSync(testInfo.outputDir, { recursive: true })
-        writeFileSync(join(testInfo.outputDir, `${route.name}-dev.png`), dev.shot)
-        writeFileSync(join(testInfo.outputDir, `${route.name}-prod.png`), prod.shot)
-        writeFileSync(join(testInfo.outputDir, `${route.name}-diff.png`), PNG.sync.write(diff))
+
+        for (const d of diffs) {
+          writeFileSync(join(testInfo.outputDir, `${route.name}-dev-t${d.tile}.png`), d.dev)
+          writeFileSync(join(testInfo.outputDir, `${route.name}-prod-t${d.tile}.png`), d.prod)
+          writeFileSync(join(testInfo.outputDir, `${route.name}-diff-t${d.tile}.png`), d.diff)
+        }
       }
 
       expect(
         diffPixels <= diffBudget,
         `${defaultBrowserType} ${route.name}: ${diffPixels} pixels differ dev≠prod (budget ${diffBudget}, see ${testInfo.outputDir})`
       ).toBe(true)
-    }
-  })
+    })
+  }
 })

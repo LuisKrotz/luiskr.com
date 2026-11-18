@@ -251,6 +251,13 @@
       "line": 0,
       "justification": "minimatch@10.2.5 is pinned for typedoc@0.28.20 (latest upstream) which declares minimatch@^10.2.5 — v11 is API-incompatible and no 10.x patch exists (fixed: 11.0.1). Dev-only docs-generation dependency; the DoS vector needs attacker-controlled glob patterns and typedoc only globs this repo's own source at docs-build time. Never ships to production.",
       "review": "2027-05-09"
+    },
+    {
+      "rule": "dep:GHSA-fc5q-39xc-vjpf",
+      "file": "yarn.lock",
+      "line": 0,
+      "justification": "picomatch 2.3.2/4.0.5/4.0.7 — no patched release exists (vulnerable <=4.0.7, latest published is 4.0.7). Dev-only reach: vite (build), stylelint→micromatch (lint), jest→anymatch (test). The ReDoS needs an attacker-controlled extglob pattern; all three consumers glob this repo's own static config patterns at build/lint/test time, never untrusted input, and picomatch never ships in the production bundle.",
+      "review": "2027-05-09"
     }
   ]
 }

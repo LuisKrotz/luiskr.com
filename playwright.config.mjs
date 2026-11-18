@@ -1,5 +1,5 @@
 import { defineConfig } from '@playwright/test'
-import { WEBKIT_DEVICES, CHROMIUM_DEVICES } from './tests/e2e/devices.mjs'
+import { WEBKIT_DEVICES, CHROMIUM_DEVICES, TOUCH_DESKTOP_DEVICES } from './tests/e2e/devices.mjs'
 
 export default defineConfig({
   testDir: './tests/e2e',
@@ -33,6 +33,12 @@ export default defineConfig({
         'cardstack-content.spec.ts',
         'cardstack-parity.spec.ts',
       ],
+    })),
+    // Touch computers are neither iOS nor Android — parity-only scope.
+    ...Object.entries(TOUCH_DESKTOP_DEVICES).map(([name, use]) => ({
+      name,
+      use,
+      testMatch: ['cardstack-parity.spec.ts'],
     })),
   ],
 })

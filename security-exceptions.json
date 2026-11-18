@@ -6,6 +6,13 @@
       "severity": "low",
       "justification": "No patched release exists (vulnerable >=4.2.0 <=4.3.1, fixed: none — latest is 4.3.1). Present only inside dev tooling — jest-config and @rollup/plugin-node-resolve (via workbox-build) — merging our own static config objects at build/test time. Never reaches the production bundle and never processes untrusted input, so prototype poisoning of the returned object has no attacker-controlled path.",
       "review": "2027-05-09"
+    },
+    {
+      "package": "picomatch",
+      "advisory": "GHSA-fc5q-39xc-vjpf",
+      "severity": "high",
+      "justification": "No patched release exists (vulnerable <=4.0.7, fixed: none). Present only inside dev tooling — vite, jest, stylelint, sass's @parcel/watcher, and rollup/tinyglobby plugin chains — matching glob patterns against our own static file lists at build/test time. Never reaches the production bundle and never processes attacker-controlled glob input, so the repeated-extglob ReDoS has no untrusted trigger path.",
+      "review": "2027-05-09"
     }
   ]
 }
