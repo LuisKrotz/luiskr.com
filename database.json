@@ -440,8 +440,8 @@
             "longdesc": "The related-project cards at the bottom of project pages. Animation: on hover the card lifts, its image zooms gently and title/description slide up — all on damped-spring easing (CSS linear() synthesized springs) so the motion overshoots slightly and settles organically; a border sheen sweeps the frame. Trigger: pointer hover/focus. Tech: CSS transitions on transform/opacity driven by spring easing curves. Purpose: makes the navigation affordance feel physical and inviting."
           },
           "body-glow": {
-            "alt": "Ambient page glow drifting slowly behind content",
-            "longdesc": "The ambient background glow behind the page content. Animation: a large soft radial gradient drifts slowly across the document, shifting position and intensity in a long loop. Trigger: runs continuously on every page. Tech: a CSS keyframe (body-glow-drift) animating a fixed background layer — zero JavaScript. Purpose: gives the dark theme atmosphere and depth instead of a flat background."
+            "alt": "Ambient page glow — a static wash behind content",
+            "longdesc": "The ambient background glow behind the page content. Behaviour: a set of large soft radial-gradient washes paints a static ambient field behind every page — no motion. Trigger: always on, on every page. Tech: static CSS background layers on the document body — zero JavaScript; a WebGL backdrop can paint the same field in float precision on capable devices. Purpose: gives both themes atmosphere and depth instead of a flat background."
           },
           "card-stack": {
             "alt": "Selected work card deck dealing with drag physics and a border-light countdown",
@@ -8991,8 +8991,8 @@
             "longdesc": "Os cards de projetos relacionados no fim das páginas de projeto. Animação: no hover o card se eleva, a imagem dá um zoom suave e título/descrição sobem — tudo em easing de mola amortecida (springs sintetizados em CSS linear()) para o movimento passar levemente e assentar de forma orgânica; um brilho varre a borda do card. Gatilho: hover/foco do ponteiro. Tecnologia: transições CSS em transform/opacity dirigidas por curvas de mola. Propósito: fazer a affordance de navegação parecer física e convidativa."
           },
           "body-glow": {
-            "alt": "Brilho ambiente da página driftando atrás do conteúdo",
-            "longdesc": "O brilho de fundo ambiente atrás do conteúdo da página. Animação: um grande gradiente radial suave drifta lentamente pelo documento, mudando posição e intensidade num loop longo. Gatilho: roda continuamente em todas as páginas. Tecnologia: um keyframe CSS (body-glow-drift) animando uma camada de fundo fixa — zero JavaScript. Propósito: dar atmosfera e profundidade ao tema escuro em vez de um fundo chapado."
+            "alt": "Brilho ambiente da página — uma lavagem estática atrás do conteúdo",
+            "longdesc": "O brilho de fundo ambiente atrás do conteúdo da página. Comportamento: um conjunto de grandes gradientes radiais suaves pinta um campo ambiente estático atrás de todas as páginas — sem movimento. Gatilho: sempre ativo em todas as páginas. Tecnologia: camadas de fundo CSS estáticas no corpo do documento — zero JavaScript; um backdrop WebGL pode pintar o mesmo campo em precisão float em dispositivos compatíveis. Propósito: dar atmosfera e profundidade aos dois temas em vez de um fundo chapado."
           },
           "card-stack": {
             "alt": "Baralho de trabalhos selecionados com física de arrasto e contagem na borda iluminada",
@@ -17559,8 +17559,8 @@
             "longdesc": "Las tarjetas de proyectos relacionados al final de las páginas de proyecto. Animación: en hover la tarjeta se eleva, la imagen hace un zoom suave y título/descripción suben — todo con easing de resorte amortiguado (springs sintetizados en CSS linear()) para que el movimiento pase ligeramente y se asiente de forma orgánica; un brillo barre el borde de la tarjeta. Disparador: hover/foco del puntero. Tecnología: transiciones CSS en transform/opacity dirigidas por curvas de resorte. Propósito: hacer que la affordance de navegación se sienta física e invitante."
           },
           "body-glow": {
-            "alt": "Brillo ambiente de la página derivando detrás del contenido",
-            "longdesc": "El brillo de fondo ambiente detrás del contenido de la página. Animación: un gran gradiente radial suave deriva lentamente por el documento, cambiando posición e intensidad en un loop largo. Disparador: corre continuamente en todas las páginas. Tecnología: un keyframe CSS (body-glow-drift) animando una capa de fondo fija — cero JavaScript. Propósito: dar atmósfera y profundidad al tema oscuro en lugar de un fondo plano."
+            "alt": "Brillo ambiente de la página — un velo estático detrás del contenido",
+            "longdesc": "El brillo de fondo ambiente detrás del contenido de la página. Comportamiento: un conjunto de grandes gradientes radiales suaves pinta un campo ambiente estático detrás de todas las páginas — sin movimiento. Disparador: siempre activo en todas las páginas. Tecnología: capas de fondo CSS estáticas en el cuerpo del documento — cero JavaScript; un fondo WebGL puede pintar el mismo campo en precisión float en dispositivos compatibles. Propósito: dar atmósfera y profundidad a ambos temas en lugar de un fondo plano."
           },
           "card-stack": {
             "alt": "Baraja de trabajos seleccionados con física de arrastre y cuenta atrás en el borde iluminado",
@@ -26126,8 +26126,8 @@
             "longdesc": "Die Related-Projekt-Karten am Ende der Projektseiten. Animation: bei Hover hebt die Karte, ihr Bild zoomt sanft und Titel/Beschreibung gleiten hoch — alles auf gedämpftem Feder-Easing (in CSS linear() synthetisierte Federn), sodass die Bewegung leicht überschwingt und organisch einpendelt; ein Schimmer fegt über den Kartenrand. Auslöser: Zeiger-Hover/Fokus. Technik: CSS-Transitions auf transform/opacity mit Feder-Easing-Kurven. Zweck: macht die Navigations-Affordance physisch und einladend."
           },
           "body-glow": {
-            "alt": "Umgebendes Seitenglühen driftet langsam hinter dem Inhalt",
-            "longdesc": "Das Umgebungs-Hintergrundglühen hinter dem Seiteninhalt. Animation: ein großer weicher Radialgradient driftet langsam über das Dokument und verschiebt Position und Intensität in langer Schleife. Auslöser: läuft kontinuierlich auf jeder Seite. Technik: ein CSS-Keyframe (body-glow-drift) animiert eine fixe Hintergrundschicht — null JavaScript. Zweck: gibt dem dunklen Theme Atmosphäre und Tiefe statt eines flachen Hintergrunds."
+            "alt": "Umgebendes Seitenglühen — ein statischer Schleier hinter dem Inhalt",
+            "longdesc": "Das Umgebungs-Hintergrundglühen hinter dem Seiteninhalt. Verhalten: ein Satz großer weicher Radialgradienten malt ein statisches Umgebungsfeld hinter jeder Seite — ohne Bewegung. Auslöser: immer aktiv auf jeder Seite. Technik: statische CSS-Hintergrundschichten am Dokumentkörper — null JavaScript; ein WebGL-Backdrop kann dasselbe Feld in Float-Präzision auf fähigen Geräten malen. Zweck: gibt beiden Themes Atmosphäre und Tiefe statt eines flachen Hintergrunds."
           },
           "card-stack": {
             "alt": "Kartenstapel ausgewählter Arbeiten mit Drag-Physik und Countdown am leuchtenden Rand",
@@ -34690,8 +34690,8 @@
             "longdesc": "Die Related-Projekt-Karte am End von de Projektseite. Animatsioon: bei Hover hebt die Kart, ihr Bild zoomt sanft un Titel/Beschreibung gleite hoch — alles uf gedämpftem Feier-Easing (in CSS linear() synthetisiarte Feier), sodass die Bewegung leicht überschwingt un organisch einpendelt; e Schimmer fegt über der Karterand. Usslöser: Zeiger-Hover/Fokus. Technik: CSS-Transitions uf transform/opacity mit Feier-Easing-Kurve. Zweck: macht die Navigations-Affordance physisch un einladend."
           },
           "body-glow": {
-            "alt": "Umgebendes Seiteglühe driftet langsom hinner em Inhalt",
-            "longdesc": "Des Umgebungs-Hintergrundglühe hinner em Seiteinhalt. Animatsioon: e grosser weicher Radialgradient driftet langsom über des Dokument un verschiebt Positsioon un Intensität in langer Schleif. Usslöser: lääft kontinuierlich uf jedere Seit. Technik: e CSS-Keyframe (body-glow-drift) animiert e fixe Hintergrundschicht — null JavaScript. Zweck: git em dunkle Theme Atmosphäre un Tief statt von em flache Hintergrund."
+            "alt": "Umgebendes Seiteglühe — e statische Schleier hinner em Inhalt",
+            "longdesc": "Des Umgebungs-Hintergrundglühe hinner em Seiteinhalt. Verhalte: e Satz grosser weicher Radialgradiente moolt e statischs Umgebungsfäld hinner jedere Seit — ohni Bewegig. Usslöser: immer aktiv uf jedere Seit. Technik: statischi CSS-Hintergrundschichte am Dokumentkörper — null JavaScript; e WebGL-Backdrop cha des glych Fäld in Float-Präzision uf fähige Grät moolen. Zweck: git beide Theme Atmosphäre un Tief statt von em flache Hintergrund."
           },
           "card-stack": {
             "alt": "Kartestappel usgewählte Arbeite mit Drag-Physik un Countdown am leuchtend Rand",
@@ -43256,8 +43256,8 @@
             "longdesc": "Las tarjetas de proyectos relacionados al final de las páginas de proyecto. Animación: en hover la tarjeta se eleva, la imagen hace un zoom suave y título/descripción suben — todo con easing de resorte amortiguado (springs sintetizados en CSS linear()) para que el movimiento pase ligeramente y se asiente de forma orgánica; un brillo barre el borde de la tarjeta. Disparador: hover/foco del puntero. Tecnología: transiciones CSS en transform/opacity dirigidas por curvas de resorte. Propósito: hacer que la affordance de navegación se sienta física e invitante."
           },
           "body-glow": {
-            "alt": "Brillo ambiente de la página derivando atrás del contenido",
-            "longdesc": "El brillo de fondo ambiente atrás del contenido de la página. Animación: un gran gradiente radial suave deriva lentamente por el documento, cambiando posición e intensidad en un loop largo. Disparador: corre continuamente en todas las páginas. Tecnología: un keyframe CSS (body-glow-drift) animando una capa de fondo fija — cero JavaScript. Propósito: darle atmósfera y profundidad al tema oscuro en lugar de un fondo plano."
+            "alt": "Brillo ambiente de la página — un velo estático atrás del contenido",
+            "longdesc": "El brillo de fondo ambiente atrás del contenido de la página. Comportamiento: un conjunto de grandes gradientes radiales suaves pinta un campo ambiente estático atrás de todas las páginas — sin movimiento. Disparador: siempre activo en todas las páginas. Tecnología: capas de fondo CSS estáticas en el cuerpo del documento — cero JavaScript; un fondo WebGL puede pintar el mismo campo en precisión float en dispositivos compatibles. Propósito: darle atmósfera y profundidad a ambos temas en lugar de un fondo plano."
           },
           "card-stack": {
             "alt": "Mazo de trabajos seleccionados con física de arrastre y cuenta regresiva en el borde iluminado",
@@ -51823,8 +51823,8 @@
             "longdesc": "Las tarjetas de proyectos relacionados al final de las páginas de proyecto. Animación: en hover la tarjeta se eleva, la imagen hace un zoom suave y título/descripción suben — todo con easing de resorte amortiguado (springs sintetizados en CSS linear()) para que el movimiento pase ligeramente y se asiente de forma orgánica; un brillo barre el borde de la tarjeta. Disparador: hover/foco del puntero. Tecnología: transiciones CSS en transform/opacity dirigidas por curvas de resorte. Propósito: hacer que la affordance de navegación se sienta física e invitante."
           },
           "body-glow": {
-            "alt": "Brillo ambiente de la página derivando atrás del contenido",
-            "longdesc": "El brillo de fondo ambiente atrás del contenido de la página. Animación: un gran gradiente radial suave deriva lentamente por el documento, cambiando posición e intensidad en un loop largo. Disparador: corre continuamente en todas las páginas. Tecnología: un keyframe CSS (body-glow-drift) animando una capa de fondo fija — cero JavaScript. Propósito: darle atmósfera y profundidad al tema oscuro en lugar de un fondo plano."
+            "alt": "Brillo ambiente de la página — un velo estático atrás del contenido",
+            "longdesc": "El brillo de fondo ambiente atrás del contenido de la página. Comportamiento: un conjunto de grandes gradientes radiales suaves pinta un campo ambiente estático atrás de todas las páginas — sin movimiento. Disparador: siempre activo en todas las páginas. Tecnología: capas de fondo CSS estáticas en el cuerpo del documento — cero JavaScript; un fondo WebGL puede pintar el mismo campo en precisión float en dispositivos compatibles. Propósito: darle atmósfera y profundidad a ambos temas en lugar de un fondo plano."
           },
           "card-stack": {
             "alt": "Baralho de trabalhos selecionados con física de arrasto y contagem na borda iluminada",
@@ -60391,8 +60391,8 @@
             "longdesc": "Proyecto relacionado tarjeta proyecto kuatiarogue opa'ỹvo. Ñemongue'e: hover jave tarjeta oñembotuicha, imagen ojapo zoom mimbuṿ ha título/descrición osẽ yvate — opaite muelle amortiguado easing rehegua (spring sintetizado CSS linear()-pe) movimiento ohasa sa'i ha oñembotṿ orgánicamente; tesa'ỹi ohasa tarjeta borda. Trigger: puntero hover/foco. Tembiporenda: CSS transición transform/opacity muelle curva omboguatareháva. Haguã: ojapo navegación affordance añetegua ha omoṿṿva."
           },
           "body-glow": {
-            "alt": "Kuatiarogue tesa'ỹi ambiente oñemyasãi contenido rupã",
-            "longdesc": "Tesa'ỹi fondo ambiente kuatiarogue contenido rupã. Ñemongue'e: radial gradiente tuicha mimbuṿ oñemyasãi mbegue documento rupi, omoambue posición ha intensidad loop ipukúva. Trigger: omba'apo tapere'ỹ opa kuatiaroguépe. Tembiporenda: peteĩ CSS keyframe (body-glow-drift) ojapo fondo capa fijo ñemongue'e — JavaScript zero. Haguã: ome'ẽ tema pytũ atmósfera ha hũgua fondo peteĩha rã."
+            "alt": "Kuatiarogue tesa'ỹi ambiente — velo estático contenido rupã",
+            "longdesc": "Tesa'ỹi fondo ambiente kuatiarogue contenido rupã. Comportamiento: peteĩ conjunto radial gradiente tuicha mimbũva ipinta campo ambiente estático opa kuatiarogue rupã — ñemongue'e'ỹ. Trigger: omba'apo tapere'ỹ opa kuatiaroguépe. Tembiporenda: fondo capa CSS estático kuatiarogue body-pe — JavaScript zero; WebGL backdrop oipinta ko campo peteĩha float precisión dispositivo compatible-pe. Haguã: ome'ẽ poho tema atmósfera ha hũgua fondo peteĩha rã."
           },
           "card-stack": {
             "alt": "Ku'éraa'õ mba'apopy poravopyre ñemongu'e fisica ha morosã ku'éraa'õ ija rehegua",
@@ -68837,8 +68837,8 @@
             "longdesc": "Le card dei progetti correlati in fondo alle pagine di progetto. Animazione: in hover la card si solleva, la sua immagine zooma dolcemente e titolo/descrizione scivolano su — tutto con easing a molla smorzata (springs sintetizzati in CSS linear()) così il movimento supera leggermente e si assesta in modo organico; un bagliore spazza il bordo della card. Trigger: hover/focus del puntatore. Tecnologia: transizioni CSS su transform/opacity guidate da curve a molla. Scopo: rendere l'affordance di navigazione fisica e invitante."
           },
           "body-glow": {
-            "alt": "Bagliore ambientale della pagina che deriva dietro il contenuto",
-            "longdesc": "Il bagliore di sfondo ambientale dietro il contenuto della pagina. Animazione: un grande gradiente radiale morbido deriva lentamente attraverso il documento, cambiando posizione e intensità in un loop lungo. Trigger: gira continuamente su ogni pagina. Tecnologia: un keyframe CSS (body-glow-drift) che anima un layer di sfondo fisso — zero JavaScript. Scopo: dare atmosfera e profondità al tema scuro invece di uno sfondo piatto."
+            "alt": "Bagliore ambientale della pagina — un velo statico dietro il contenuto",
+            "longdesc": "Il bagliore di sfondo ambientale dietro il contenuto della pagina. Comportamento: un insieme di grandi gradienti radiali morbidi dipinge un campo ambientale statico dietro ogni pagina — senza movimento. Trigger: sempre attivo su ogni pagina. Tecnologia: layer di sfondo CSS statici sul body del documento — zero JavaScript; un backdrop WebGL può dipingere lo stesso campo in precisione float sui dispositivi compatibili. Scopo: dare atmosfera e profondità a entrambi i temi invece di uno sfondo piatto."
           },
           "card-stack": {
             "alt": "Mazzo di lavori selezionati con fisica di trascinamento e countdown sul bordo luminoso",
@@ -77401,8 +77401,8 @@
             "longdesc": "Карточки связанных проектов внизу страниц проектов. Анимация: при ховере карточка приподнимается, её изображение мягко зумируется, а заголовок/описание подъезжают — всё на затухающем пружинном изинге (пружины, синтезированные в CSS linear()), чтобы движение слегка перелетало и органично устанавливалось; блик проносится по краю карточки. Триггер: ховер/фокус указателя. Технология: CSS-транзиции на transform/opacity, ведомые пружинными кривыми. Назначение: делает навигационный намёк физическим и приглашающим."
           },
           "body-glow": {
-            "alt": "Окружающее свечение страницы медленно дрейфует за контентом",
-            "longdesc": "Окружающее фоновое свечение за содержимым страницы. Анимация: большой мягкий радиальный градиент медленно дрейфует по документу, меняя позицию и интенсивность в длинном цикле. Триггер: работает непрерывно на каждой странице. Технология: один CSS-кейфрейм (body-glow-drift) анимирует фиксированный фоновый слой — ноль JavaScript. Назначение: придаёт тёмной теме атмосферу и глубину вместо плоского фона."
+            "alt": "Окружающее свечение страницы — статичная вуаль за контентом",
+            "longdesc": "Окружающее фоновое свечение за содержимым страницы. Поведение: набор больших мягких радиальных градиентов рисует статичное окружающее поле за каждой страницей — без движения. Триггер: всегда активно на каждой странице. Технология: статичные фоновые CSS-слои на теле документа — ноль JavaScript; WebGL-фон может рисовать то же поле с float-точностью на поддерживаемых устройствах. Назначение: придаёт обеим темам атмосферу и глубину вместо плоского фона."
           },
           "card-stack": {
             "alt": "Колода избранных работ с физикой перетаскивания и светящимся обратным отсчётом по краю",
@@ -86003,8 +86003,8 @@
             "longdesc": "Les cartes de projets liés en bas des pages de projet. Animation : au survol la carte se soulève, son image zoome doucement et titre/description montent — le tout avec un easing de ressort amorti (springs synthétisés en CSS linear()) pour que le mouvement dépasse légèrement et s'établisse organiquement ; un reflet balaie le bord de la carte. Déclencheur : survol/focus du pointeur. Technologie : transitions CSS sur transform/opacity pilotées par des courbes de ressort. Objectif : rendre l'affordance de navigation physique et invitante."
           },
           "body-glow": {
-            "alt": "Lueur ambiante de la page dérivant derrière le contenu",
-            "longdesc": "La lueur de fond ambiante derrière le contenu de la page. Animation : un grand dégradé radial doux dérive lentement à travers le document, changeant de position et d'intensité en une longue boucle. Déclencheur : tourne en continu sur chaque page. Technologie : un keyframe CSS (body-glow-drift) animant un calque de fond fixe — zéro JavaScript. Objectif : donner atmosphère et profondeur au thème sombre plutôt qu'un fond plat."
+            "alt": "Lueur ambiante de la page — un voile statique derrière le contenu",
+            "longdesc": "La lueur de fond ambiante derrière le contenu de la page. Comportement : un ensemble de grands dégradés radiaux doux peint un champ ambiant statique derrière chaque page — sans mouvement. Déclencheur : toujours actif sur chaque page. Technologie : des calques de fond CSS statiques sur le corps du document — zéro JavaScript ; un fond WebGL peut peindre le même champ en précision float sur les appareils compatibles. Objectif : donner atmosphère et profondeur aux deux thèmes plutôt qu'un fond plat."
           },
           "card-stack": {
             "alt": "Jeu de cartes des travaux sélectionnés avec physique de glisser et compte à rebours lumineux sur le bord",
@@ -94567,8 +94567,8 @@
             "longdesc": "Le card dei progetti coreladi in fondo a le pàgine de progeto. Animassion: in hover la card la se sólza, la so imagine la zooma dolcemente e título/descrission i licà su — tuto co easing a moła smorsada (springs sintetissadi in CSS linear()) cussì el movimento el pasa legermente e el se assesta in modo orgànico; un sbarluso el spasa el bordo de la card. Trigger: hover/focus del puntador. Tecnologia: transissioni CSS su transform/opacity guidade da curve a moła. Scopo: render l'affordance de navigassion fìsica e invitante."
           },
           "body-glow": {
-            "alt": "Sbarluso anbientale de la pàgina che el deriva drìo el contenuto",
-            "longdesc": "El sbarluso de sfondo anbientale drìo el contenuto de la pàgina. Animassion: un gran gradiente radiale morbido el deriva lentamente travers el documento, canbiando posission e intensità in un loop longo. Trigger: el gira continuamente su ogni pàgina. Tecnologia: un keyframe CSS (body-glow-drift) che el anima un layer de sfondo fiso — zero JavaScript. Scopo: dar atmosfera e profondità al tema scuro invesse de un sfondo piato."
+            "alt": "Sbarluso anbientale de la pàgina — un velo stàtego drìo el contenuto",
+            "longdesc": "El sbarluso de sfondo anbientale drìo el contenuto de la pàgina. Conportamento: un insieme de grandi gradienti radiali morbidi i depenje un canpo anbientale stàtego drìo ogni pàgina — sensa movimento. Trigger: el xe sempre ativo su ogni pàgina. Tecnologia: layer de sfondo CSS stàteghi sul body del documento — zero JavaScript; un backdrop WebGL el pol depenjer el stesso canpo in precision float sui dispoxitivi compatibili. Scopo: dar atmosfera e profondità a tuti do i temi invesse de un sfondo piato."
           },
           "card-stack": {
             "alt": "Maso de łavori sełesionà co fìxica de strassinamento e countdown sol bordo luminoso",
@@ -103133,8 +103133,8 @@
             "longdesc": "De related-projectkaarten onderaan de projectpagina's. Animatie: bij hover heft de kaart, zoomt de afbeelding zacht en schuiven titel/beschrijving omhoog — alles op gedempte-veer-easing (in CSS linear() gesynthetiseerde veren) zodat de beweging licht overschiet en organisch stabiliseert; een schimmer veegt over de kaartrand. Trigger: pointer-hover/focus. Technologie: CSS-transitions op transform/opacity gedreven door veerkrommes. Doel: maakt de navigatie-affordance fysiek en uitnodigend."
           },
           "body-glow": {
-            "alt": "Omgevende paginagloed drijft traag achter de content",
-            "longdesc": "De omgevings-achtergrondgloed achter de pagina-inhoud. Animatie: een grote zachte radiale gradiënt drijft traag over het document en verschuift positie en intensiteit in een lange loop. Trigger: loopt continu op elke pagina. Technologie: een CSS-keyframe (body-glow-drift) animeert een vaste achtergrondlaag — nul JavaScript. Doel: geeft het donkere thema sfeer en diepte in plaats van een vlakke achtergrond."
+            "alt": "Omgevende paginagloed — een statische waas achter de content",
+            "longdesc": "De omgevings-achtergrondgloed achter de pagina-inhoud. Gedrag: een set grote zachte radiale gradiënten schildert een statisch omgevingsveld achter elke pagina — geen beweging. Trigger: altijd actief op elke pagina. Technologie: statische CSS-achtergrondlagen op de document-body — nul JavaScript; een WebGL-achtergrond kan hetzelfde veld in float-precisie schilderen op geschikte apparaten. Doel: geeft beide thema's sfeer en diepte in plaats van een vlakke achtergrond."
           },
           "card-stack": {
             "alt": "Kaartspel van geselecteerd werk met sleepfysica en aftellen op de verlichte rand",
@@ -111696,8 +111696,8 @@
             "longdesc": "Les targetes de projectes relacionats al final de les pàgines de projecte. Animació: en hover la targeta s'eleva, la imatge fa un zoom suaument i títol/descripció pugen — tot amb easing de ressort amortit (springs sintetitzats en CSS linear()) perquè el moviment passi lleugerament i s'assenti de forma orgànica; una brillantor escombra la vora de la targeta. Disparador: hover/focus del punter. Tecnologia: transicions CSS en transform/opacity dirigides per corbes de ressort. Propòsit: fer que l'affordance de navegació se senti física i convidant."
           },
           "body-glow": {
-            "alt": "Brillantor ambient de la pàgina derivant darrere el contingut",
-            "longdesc": "La brillantor de fons ambient darrere el contingut de la pàgina. Animació: un gran degradat radial suau deriva lentament pel document, canviant posició i intensitat en un loop llarg. Disparador: corre contínuament a totes les pàgines. Tecnologia: un keyframe CSS (body-glow-drift) animant una capa de fons fixa — zero JavaScript. Propòsit: donar atmosfera i profunditat al tema fosc en lloc d'un fons pla."
+            "alt": "Brillantor ambient de la pàgina — un vel estàtic darrere el contingut",
+            "longdesc": "La brillantor de fons ambient darrere el contingut de la pàgina. Comportament: un conjunt de grans degradats radials suaus pinta un camp ambient estàtic darrere de totes les pàgines — sense moviment. Disparador: sempre actiu a totes les pàgines. Tecnologia: capes de fons CSS estàtiques al cos del document — zero JavaScript; un fons WebGL pot pintar el mateix camp en precisió float en dispositius compatibles. Propòsit: donar atmosfera i profunditat als dos temes en lloc d'un fons pla."
           },
           "card-stack": {
             "alt": "Baralla de treballs seleccionats amb física d'arrossegament i compte enrere a la vora il·luminada",
@@ -120260,8 +120260,8 @@
             "longdesc": "As tarxetas de proxectos relacionados ao final das páxinas de proxecto. Animación: en hover a tarxeta elévase, a imaxe fai un zoom suave e título/descrición sobem — todo con easing de resorte amortecido (springs sintetizados en CSS linear()) para que o movemento pase lixeiramente e se asente de forma orgánica; un brillo varre o bordo da tarxeta. Disparador: hover/foco do punteiro. Tecnoloxía: transicións CSS en transform/opacity dirixidas por curvas de resorte. Propósito: facer que a affordance de navegación se sinta física e convidante."
           },
           "body-glow": {
-            "alt": "Brillo ambiente da páxina derivando detrás do contido",
-            "longdesc": "O brillo de fondo ambiente detrás do contido da páxina. Animación: un gran gradiente radial suave deriva lentamente polo documento, cambiando posición e intensidade nun loop longo. Disparador: corre continuamente en todas as páxinas. Tecnoloxía: un keyframe CSS (body-glow-drift) animando unha capa de fondo fixa — cero JavaScript. Propósito: dar atmosfera e profundidade ao tema escuro no canto dun fondo chá."
+            "alt": "Brillo ambiente da páxina — un velo estático detrás do contido",
+            "longdesc": "O brillo de fondo ambiente detrás do contido da páxina. Comportamento: un conxunto de grandes gradientes radiais suaves pinta un campo ambiente estático detrás de todas as páxinas — sen movemento. Disparador: sempre activo en todas as páxinas. Tecnoloxía: capas de fondo CSS estáticas no corpo do documento — cero JavaScript; un fondo WebGL pode pintar o mesmo campo en precisión float en dispositivos compatibles. Propósito: dar atmosfera e profundidade aos dous temas no canto dun fondo chá."
           },
           "card-stack": {
             "alt": "Baralla de traballos seleccionados con física de arrastre e conta atrás no bordo iluminado",
@@ -128825,8 +128825,8 @@
             "longdesc": "Na cártaí tionscadail ghaolmhar ag bun na leathanaigh tionscadail. Beochan: ar hover ardaíonn an cárta, zúmálann a íomhá go bog agus sleamhnaíonn teideal/cur síos suas — ar fad ar easing sprionga maolaithe (springs sintéisithe in CSS linear()) ionas go dtéann an ghluaiseacht thar beagán agus go suíonn sé go orgánach; scuabann loinnir imeall an chárta. Spreagthóir: hover/fócas an pointeora. Teicneolaíocht: aistrithe CSS ar transform/opacity faoi threoir cuair sprionga. Cuspóir: déanann sé an affordance nascleanúna fisiciúil agus cuireadhach."
           },
           "body-glow": {
-            "alt": "Loinnir chomhthimpeallach an leathanaigh ag sreabhadh taobh thiar den ábhar",
-            "longdesc": "An loinnir chúlra chomhthimpeallach taobh thiar d'ábhar an leathanaigh. Beochan: sreabhann grádán radacha mór bog go mall trasna an doiciméid, ag athrú suímh agus déine i lúb fhada. Spreagthóir: ritheann go leanúnach ar gach leathanach. Teicneolaíocht: keyframe CSS amháin (body-glow-drift) ag beochan ciseal chúlra sheasta — nialas JavaScript. Cuspóir: atmaisféar agus doimhneacht a thabhairt don téama dorcha in ionad cúlra álainn."
+            "alt": "Loinnir chomhthimpeallach an leathanaigh — brat statach taobh thiar den ábhar",
+            "longdesc": "An loinnir chúlra chomhthimpeallach taobh thiar d'ábhar an leathanaigh. Iompar: péinteáiltear réimse comhthimpeallach statach le sraith de ghrádáin radacha mhóra bhoga taobh thiar de gach leathanach — gan ghluaiseacht. Spreagthóir: gníomhach i gcónaí ar gach leathanach. Teicneolaíocht: sraitheanna cúlra CSS statacha ar chorp an doiciméid — nialas JavaScript; is féidir le cúlra WebGL an réimse céanna a phéinteáil i bbeachtas float ar ghléasanna chumasacha. Cuspóir: atmaisféar agus doimhneacht a thabhairt don dá théama in ionad cúlra álainn."
           },
           "card-stack": {
             "alt": "Bearta cártaí saothair roghnaithe le fisic tarraingthe agus comhaireamh síos ar an imeall lonrach",
