@@ -47,6 +47,34 @@
       } catch (e) {
         /* sessionStorage may throw under hard privacy modes — loader still cleans up at mount */
       }
+
+      // Theme pre-stamp — mirrors applyTheme()'s resolution
+      // (core/store/mutations/theme.ts) at parse time so the first themed
+      // paint already carries html.dark-mode. Without it, warm reloads
+      // (intro-skip hides the veil) paint the sheet's light --bg-primary
+      // until initTheme flips the class ~1s in, and body's 0.3s
+      // background-color transition renders that flip as a visible flash.
+      // Literals mirror the token modules this pre-token script cannot
+      // import: PREF_STORAGE_KEYS.THEME='theme', THEME dark/light,
+      // MEDIA_QUERIES.PREFERS_COLOR_DARK, STATE_CLASSES.DARK_MODE, and the
+      // playground slug set isPlaygroundRoute() forces dark on.
+      try {
+        var __lkStoredTheme = localStorage.getItem('theme')
+        var __lkLastSegment = location.pathname.split('/').filter(Boolean).pop() || ''
+        var __lkPlayground =
+          /^(aarde-playground|earth-playground|erd-playground|erde-playground|esperimento-campo-stellare|esperimento-canpo-stelare|experience-champ-etoile|experiment-camp-estelar|experimento-campo-estelar|mbyja-nembosarai|playground-an-domhain|playground-da-terra|playground-de-la-terra|playground-de-la-terre|playground-de-la-tierra|playground-della-terra|space-playground|star-field-experiment|sternenfeld-experiment|sternfeld-experiment|sterrenveld-experiment|turgnamh-reimse-realta|yvy-nembosarai|zemnaya-pesochnitsa|zvezdnoe-pole)$/.test(
+            __lkLastSegment
+          )
+        var __lkDark =
+          __lkPlayground ||
+          __lkStoredTheme === 'dark' ||
+          (__lkStoredTheme !== 'light' &&
+            !!(window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches))
+
+        if (__lkDark) document.documentElement.classList.add('dark-mode')
+      } catch (e) {
+        /* localStorage/matchMedia may throw under hard privacy modes — applyTheme resolves later */
+      }
     </script>
 
     <meta property="fb:app_id" content="974280449654426" />
