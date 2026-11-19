@@ -744,13 +744,13 @@ export default defineConfig(({ command }) => {
         },
         manifest: siteManifest,
         workbox: {
-          // Precache only the default tier — the other 11 bundles exist for
-          // engines that don't support service workers anyway.
-          globPatterns: [
-            'index.html',
-            'v/es2026/**/*.{js,css}',
-            '*.{ico,png,svg,webmanifest,txt,xml}',
-          ],
+          // Precache only the shell + root assets. Every bundle entry is
+          // content-hashed, so the full es2026 glob made install an
+          // all-or-nothing 350+ fetch chain — a single 404/timeout during
+          // a rolling deploy aborted activation and pinned the visitor on
+          // the old worker forever. Shell-only precache installs in
+          // seconds and can never fail on an evicted chunk.
+          globPatterns: ['index.html', '*.{ico,png,svg,webmanifest,txt,xml}'],
           globIgnores: [
             '**/cms-*',
             '**/cms.*',
@@ -772,6 +772,25 @@ export default defineConfig(({ command }) => {
             /robots\.txt/,
             /\/v\//,
             /\/cms/,
+          ],
+          runtimeCaching: [
+            {
+              // Hashed bundle assets — identical URLs are byte-identical
+              // forever, so CacheFirst is safe; a new build's renamed
+              // chunks simply miss and fall through to the network.
+              urlPattern: /\/v\/[^/]+\/assets\/|\/assets\/polyfills\//,
+              handler: 'CacheFirst',
+              options: {
+                cacheName: 'lk-hashed-assets',
+                expiration: {
+                  // Covers roughly two build's worth of chunks — stale
+                  // entries for replaced hashes expire naturally.
+                  maxEntries: 512,
+                  maxAgeSeconds: 30 * 24 * 60 * 60,
+                  purgeOnQuotaError: true,
+                },
+              },
+            },
           ],
           cleanupOutdatedCaches: true,
           skipWaiting: true,
